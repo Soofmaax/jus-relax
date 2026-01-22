@@ -2,6 +2,8 @@ export interface DigitalMenuItem {
   name: string;
   description: string;
   price: string;
+  /** Met en avant certains éléments dans la carte digitale (infos, avertissements, etc.). */
+  isHighlight?: boolean;
 }
 
 export interface DigitalMenuCategory {
