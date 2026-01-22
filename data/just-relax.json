@@ -1,0 +1,225 @@
+{
+  "name": "Just Relax",
+  "tagline": "Restaurant & Lounge",
+  "description": "Restaurant & lounge à Pantin avec terrasse privée, chicha, cocktails et ambiance conviviale. Ouvert 7j/7 pour vos déjeuners, dîners et soirées.",
+  "heroImage": "https://cdn.website.dish.co/media/a7/73/6833522/3a4a171e-ba2f-4547-bfb9-5ab65a55c8d2-JPG.jpg",
+  "contact": {
+    "phoneMain": "+33148918366",
+    "phoneAlt": "+33634076140",
+    "whatsapp": "",
+    "email": "infos.justrelax@gmail.com",
+    "emailAlt": "marineranquet@yahoo.fr",
+    "googleReviewUrl": "",
+    "bookingUrl": "",
+    "address": {
+      "line1": "136 Av. du Général Leclerc",
+      "postalCode": "93500",
+      "city": "Pantin",
+      "country": "France",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=136%20Av.%20du%20G%C3%A9n%C3%A9ral%20Leclerc%20,%2093500%20Pantin"
+    }
+  },
+  "openingHours": [
+    {
+      "days": "Lundi à Vendredi",
+      "slots": [
+        {
+          "from": "11:00",
+          "to": "02:00",
+          "label": "Service continu"
+        }
+      ]
+    },
+    {
+      "days": "Samedi à Dimanche",
+      "slots": [
+        {
+          "from": "15:00",
+          "to": "02:00",
+          "label": "Service continu"
+        }
+      ]
+    }
+  ],
+  "services": [
+    "Accessible aux personnes à mobilité réduite",
+    "Climatisation",
+    "Terrasse",
+    "Événements privés",
+    "Coin fumeurs",
+    "À emporter",
+    "Réceptions de mariage",
+    "Wi-Fi gratuit"
+  ],
+  "paymentMethods": [
+    "Espèces",
+    "Paiement sans contact",
+    "MasterCard",
+    "Ticket Restaurant®",
+    "VISA",
+    "Carte ticket restaurant",
+    "Carte de débit",
+    "Apple Pay",
+    "Maestro"
+  ],
+  "menus": [
+    {
+      "id": "just-menu",
+      "name": "Just Menu",
+      "description": "Carte principale des plats. Cliquez pour ouvrir le PDF.",
+      "pdfUrl": "https://cdn.website.dish.co/media/66/5d/7586361/Just-Menu.pdf",
+      "categories": [
+        {
+          "id": "exemple-entrees",
+          "name": "Exemple de catégorie",
+          "description": "À remplacer par vos propres catégories (entrées, plats, desserts, etc.).",
+          "items": [
+            {
+              "name": "À compléter : Plat signature",
+              "description": "TODO – Remplacer par le nom et la description de votre plat signature.",
+              "price": "00,00 €",
+              "isPlaceholder": true
+            },
+            {
+              "name": "À compléter : Dessert maison",
+              "description": "TODO – Remplacer par un dessert phare de la maison.",
+              "price": "00,00 €",
+              "isPlaceholder": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "just-boisson",
+      "name": "Just Boisson",
+      "description": "Carte des boissons. Cliquez pour ouvrir le PDF.",
+      "pdfUrl": "https://cdn.website.dish.co/media/70/93/7586362/Just-Boisson.pdf",
+      "categories": []
+    },
+    {
+      "id": "just-chicha",
+      "name": "Just Chicha",
+      "description": "Carte des chichas. Cliquez pour ouvrir le PDF.",
+      "pdfUrl": "https://cdn.website.dish.co/media/09/d3/7586363/Just-Chicha.pdf",
+      "categories": []
+    }
+  ],
+  "gallery": [
+    {
+      "id": "galerie-01",
+      "title": "Galerie 01",
+      "images": [
+        {
+          "url": "https://cdn.website.dish.co/media/a7/73/6833522/3a4a171e-ba2f-4547-bfb9-5ab65a55c8d2-JPG.jpg",
+          "alt": "Just Relax – Ambiance intérieure"
+        },
+        {
+          "url": "https://cdn.website.dish.co/media/ae/2b/6833527/Just-Relax-IMG-5952-JPG.jpg",
+          "alt": "Just Relax – Espace lounge"
+        }
+      ]
+    },
+    {
+      "id": "galerie-02",
+      "title": "Galerie 02",
+      "images": [
+        {
+          "url": "https://cdn.website.dish.co/media/90/b4/6825778/Just-Relax-02-jpg.jpg",
+          "alt": "Just Relax – Salle de restaurant"
+        },
+        {
+          "url": "https://cdn.website.dish.co/media/2f/68/6825784/Just-Relax-02-1-jpg.jpg",
+          "alt": "Just Relax – Vue depuis la terrasse"
+        }
+      ]
+    },
+    {
+      "id": "galerie-03",
+      "title": "Galerie 03",
+      "images": [
+        {
+          "url": "https://cdn.website.dish.co/media/b8/fb/6825789/Just-Relax-03-jpg.jpg",
+          "alt": "Just Relax – Détails de décoration"
+        }
+      ]
+    },
+    {
+      "id": "galerie-06",
+      "title": "Galerie 06",
+      "images": [
+        {
+          "url": "https://cdn.website.dish.co/media/a9/35/6825825/Just-Relax-10-jpg.jpg",
+          "alt": "Just Relax – Ambiance de soirée"
+        }
+      ]
+    },
+    {
+      "id": "galerie-07",
+      "title": "Galerie 07",
+      "images": [
+        {
+          "url": "https://cdn.website.dish.co/media/a6/f2/6825830/Just-Relax-11-jpg.jpg",
+          "alt": "Just Relax – Salle et lumières"
+        },
+        {
+          "url": "https://cdn.website.dish.co/media/18/4c/6825835/Just-Relax-12-jpg.jpg",
+          "alt": "Just Relax – Espace convivial"
+        }
+      ]
+    },
+    {
+      "id": "galerie-08",
+      "title": "Galerie 08",
+      "images": [
+        {
+          "url": "https://cdn.website.dish.co/media/8b/18/6825840/Just-Relax-332969010-1246183022774516-9123708434441955679-n-jpg.jpg",
+          "alt": "Just Relax – Cocktails et chicha"
+        },
+        {
+          "url": "https://cdn.website.dish.co/media/52/49/6825846/Just-Relax-344237652-907130250392530-4183757377788273685-n-jpg.jpg",
+          "alt": "Just Relax – Ambiance lounge"
+        }
+      ]
+    }
+  ],
+  "delivery": {
+    "deliveroo": "https://deliveroo.fr/fr/restaurants/paris/bobigny-pantin",
+    "uberEats": "https://www.ubereats.com/fr/store/just-relax/2DlO6ob9Xt-zTfRomb3oVg",
+    "others": []
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "legal": {
+    "companyName": "JUST RELAX",
+    "firstName": "Fethi",
+    "lastName": "Chelda",
+    "registrationType": "registre des sociétés",
+    "registrationNumber": "90047622700021",
+    "localTaxNumber": "90047622700021",
+    "shareCapital": "1000 €",
+    "phone": "+33634076140",
+    "email": "marineranquet@yahoo.fr",
+    "addressLine1": "136 Av. du Général Leclerc",
+    "postalCode": "93500",
+    "city": "Pantin",
+    "country": "France"
+  },
+  "seo": {
+    "title": "Just Relax – Restaurant & Lounge à Pantin",
+    "description": "Restaurant & lounge à Pantin avec terrasse privée, chicha, cocktails et ambiance conviviale. Ouvert 7j/7 pour vos déjeuners, dîners et soirées.",
+    "keywords": [
+      "Just Relax",
+      "restaurant Pantin",
+      "lounge Pantin",
+      "chicha Pantin",
+      "terrasse privée",
+      "cocktails",
+      "restaurant 93500",
+      "restaurant général Leclerc Pantin"
+    ]
+  }
+}
