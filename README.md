@@ -4,6 +4,48 @@ Ce projet est un site vitrine pour **Just Relax – Restaurant &amp; Lounge à P
 
 Ce document résume _où_ modifier quoi, sans avoir à rentrer dans tous les fichiers React/Next.
 
+## Guide pour développeurs
+
+### Prérequis
+
+- Node.js 20 ou plus récent
+- npm (le dépôt inclut un `package-lock.json`, le projet est donc pensé pour npm)
+
+### Installation des dépendances
+
+Depuis la racine du projet :
+
+```bash
+npm install
+```
+
+### Lancer le projet en développement
+
+```bash
+npm run dev
+```
+
+Par défaut, l’application est accessible sur `http://localhost:3000`.
+
+### Scripts disponibles
+
+- `npm run dev` – lance le serveur de développement (avec Turbopack).
+- `npm run build` – génère le build de production Next.js.
+- `npm start` – démarre le serveur Next.js en mode production (après `npm run build`).
+- `npm run lint` – exécute ESLint avec la configuration Next.js.
+- `npm run type-check` – lance TypeScript (`tsc`) en mode vérification uniquement.
+
+### Structure du projet (vue d’ensemble)
+
+- `data/just-relax.json` – données métier et coordonnées (voir section 1 ci‑dessous).
+- `src/app/` – routes et pages App Router Next.js (`/`, `/menu`, `/galerie`, etc.).
+- `src/components/` – composants UI réutilisables (Hero, Section, CTAButtons, etc.).
+- `src/lib/` – logique métier, contenu structuré et helpers SEO.
+- `public/` – assets statiques (images, icônes, etc.).
+- `next.config.ts` – configuration Next.js (ex. domaines autorisés pour les images).
+- `tsconfig.json` – configuration TypeScript.
+- `eslint.config.mjs` – configuration ESLint (base Next.js).
+
 ---
 
 ## 1. Données métier (adresse, horaires, menus…)
