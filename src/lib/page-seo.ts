@@ -32,4 +32,14 @@ export const pageSeo = {
     description:
       "Privatisation de restaurant avec terrasse à Pantin (93500) pour anniversaires, afterworks, soirées d’entreprise et événements privés. Devis sur mesure et accueil jusqu’à 2h du matin.",
   } as Metadata,
+  reservation: {
+    title: `Réservation – ${justRelaxData.name} à Pantin`,
+    description:
+      "Réservez votre table chez Just Relax à Pantin : déjeuner, dîner, afterwork ou événement privé avec terrasse et lounge chicha, 7j/7 jusqu’à 2h du matin.",
+  } as Metadata,
+  protectionDonnees: {
+    title: `Protection des données – ${justRelaxData.name}`,
+    description:
+      "Politique de confidentialité et informations sur la protection des données personnelles collectées via le site Just Relax (formulaire de contact, outils de mesure d’audience, etc.).",
+  } as Metadata,
 };

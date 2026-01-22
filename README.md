@@ -37,10 +37,13 @@ Par défaut, l’application est accessible sur `http://localhost:3000`.
 
 ### Structure du projet (vue d’ensemble)
 
-- `data/just-relax.json` – données métier et coordonnées (voir section 1 ci‑dessous).
-- `src/app/` – routes et pages App Router Next.js (`/`, `/menu`, `/galerie`, etc.).
-- `src/components/` – composants UI réutilisables (Hero, Section, CTAButtons, etc.).
-- `src/lib/` – logique métier, contenu structuré et helpers SEO.
+- `data/site-config.ts` – configuration centrale du site (branding, description, etc.).
+- `data/just-relax.json` – données métier brutes (adresse, horaires, menus PDF, galerie…).
+- `data/menu.json` – structure éditable de la carte digitale (catégories & items, placeholders fournis).
+- `data/events.json` – configuration éditable des événements clés (afterworks, privatisations, etc.).
+- `src/app/` – routes et pages App Router Next.js (`/`, `/menu`, `/galerie`, `/reservation`, etc.).
+- `src/components/` – composants UI réutilisables (HeroImmersif, ImmersiveIntro, Section, CTAButtons, etc.).
+- `src/lib/` – logique métier, contenu structuré et helpers SEO/JSON-LD.
 - `public/` – assets statiques (images, icônes, etc.).
 - `next.config.ts` – configuration Next.js (ex. domaines autorisés pour les images).
 - `tsconfig.json` – configuration TypeScript.
@@ -50,8 +53,10 @@ Par défaut, l’application est accessible sur `http://localhost:3000`.
 
 ## 1. Données métier (adresse, horaires, menus…)
 
-**Fichier :** `data/just-relax.json`  
-**Type :** données structurées (JSON)  
+**Fichiers :**  
+- `data/site-config.ts` – configuration centrale et textes optimisés pour l’expérience immersive.  
+- `data/just-relax.json` – données brutes complètes utilisées par `site-config.ts`.  
+
 **Importé via :** `src/lib/just-relax-data.ts`
 
 C’est la source de vérité pour :
@@ -66,7 +71,7 @@ C’est la source de vérité pour :
 - Références légales (raison sociale, SIRET, etc.)
 - SEO global (titre, description, mots-clés)
 
-> ✅ Pour changer un numéro de téléphone, une adresse, les horaires ou les liens PDF des menus, il suffit de modifier `data/just-relax.json`.
+> ✅ Pour changer un numéro de téléphone, une adresse, les horaires ou les liens PDF des menus, il suffit de modifier `data/just-relax.json` (ou, pour les textes marketing, `data/site-config.ts`).
 
 ---
 
@@ -179,82 +184,29 @@ La home est composée en grande partie de contenus éditoriaux faciles à modifi
 
 ### 4.1. Hero / textes généraux
 
-- Structure : `src/components/Hero.tsx`
+- Structure : `src/components/HomePage.tsx` + `src/components/HeroImmersif.tsx` + `src/components/ImmersiveIntro.tsx`
 - Données utilisées : `justRelaxData` (nom, tagline, description, services, images)
 
-La plupart des textes du hero sont générés à partir de `data/just-relax.json`.  
-Pour changer la “phrase marketing” principale, on modifie `justRelaxData.description`.
+La plupart des textes du hero sont générés à partir de `data/site-config.ts` / `data/just-relax.json`.  
+Pour changer la “phrase marketing” principale, on modifie `siteConfig.description` dans `data/site-config.ts`.
 
-### 4.2. “Menu du moment” et “Avis clients”
+### 4.2. Expérience d’entrée immersive
 
-**Fichier :** `src/lib/home-content.ts`
+- L’écran d’intro plein écran est géré par `src/components/ImmersiveIntro.tsx`.
+- Le hero principal (pétales, parallaxe légère, CTA) est géré par `src/components/HeroImmersif.tsx`.
+- La page d’accueil orchestre le tout via `src/components/HomePage.tsx` et se contente d’être montée dans `src/app/page.tsx`.
 
-```ts
-export const menuDuMomentItems = [
-  {
-    name: "Planche à partager Just Relax",
-    description: "...",
-    price: "29,00 €",
-  },
-  ...
-];
-
-export const avisClientsExemples = [
-  {
-    name: "Samir",
-    source: "Exemple d'avis Google",
-    text: "Super ambiance...",
-  },
-  ...
-];
-```
-
-Utilisé dans `src/app/page.tsx` :
-
-```ts
-import {
-  menuDuMomentItems,
-  avisClientsExemples,
-} from "@/lib/home-content";
-
-{menuDuMomentItems.map(...)}
-{avisClientsExemples.map(...)}
-```
-
-> ✅ Pour changer les plats mis en avant ou les exemples d’avis, on édite **seulement** `home-content.ts`.
+> ✅ Pour ajuster les textes clés de l’intro ou du hero, modifier les chaînes présentes dans `ImmersiveIntro.tsx` / `HeroImmersif.tsx`, en cohérence avec `data/site-config.ts`.
 
 ---
 
 ## 5. Contenu éditorial de la page /menu
 
-**Fichier :** `src/lib/menu-content.ts`
+**Fichiers :**  
+- `src/lib/menu-content.ts` – carte digitale actuellement utilisée sur `/menu`.  
+- `data/menu.json` – structure JSON prévue pour accueillir votre carte définitive (catégories & items), avec des placeholders prêts à être remplacés.
 
-Ce fichier définit la **carte digitale d’exemple** affichée sur `/menu` :
-
-```ts
-export const digitalMenuCategories = [
-  {
-    id: "entrees-demo",
-    name: "Entrées",
-    items: [
-      { name: "Carpaccio de bœuf mariné", description: "...", price: "13,00 €" },
-      ...
-    ],
-  },
-  {
-    id: "plats-demo",
-    name: "Plats",
-    items: [ ... ],
-  },
-  {
-    id: "desserts-demo",
-    name: "Desserts",
-    items: [ ... ],
-  },
-];
-```
-
-Utilisé dans `src/app/menu/page.tsx` :
+Utilisation actuelle dans `src/app/menu/page.tsx` :
 
 ```ts
 import { digitalMenuCategories } from "@/lib/menu-content";
@@ -264,7 +216,8 @@ import { digitalMenuCategories } from "@/lib/menu-content";
 ))}
 ```
 
-> ✅ Pour adapter la carte digitale (texte & prix), sans toucher au JSX, on modifie `menu-content.ts`.
+> ✅ Pour adapter rapidement la carte digitale (texte & prix), vous pouvez modifier `menu-content.ts`.  
+> ✅ Pour une approche 100% data-driven, vous pouvez à terme basculer la source de `digitalMenuCategories` sur `data/menu.json`.
 
 Pour le reste :
 
@@ -273,14 +226,16 @@ Pour le reste :
 
 ---
 
-## 6. Pages de contenu (galerie, accès, contact, mentions légales)
+## 6. Pages de contenu (galerie, accès, contact, mentions légales, données)
 
 Les pages :
 
-- `/galerie` → `src/app/galerie/page.tsx`
+- `/galerie` → `src/app/galerie/page.tsx` (grille + lightbox).
 - `/acces-horaires` → `src/app/acces-horaires/page.tsx`
-- `/contact` → `src/app/contact/page.tsx`
+- `/contact` → `src/app/contact/page.tsx` (formulaire connecté à `/api/contact` + carte).
+- `/reservation` → `src/app/reservation/page.tsx` (CTA appel/e-mail + placeholder widget).
 - `/mentions-legales` → `src/app/mentions-legales/page.tsx`
+- `/protection-des-donnees` → `src/app/protection-des-donnees/page.tsx`
 
 suivent toutes la même logique :
 
@@ -289,6 +244,7 @@ suivent toutes la même logique :
 - Textes libres : directement dans le JSX, faciles à éditer (1–3 paragraphes).
 
 Les mentions légales utilisent aussi `justRelaxData.legal` pour les infos société.
+La page “Protection des données” s’appuie sur les mêmes données (adresse, raison sociale) pour décrire la politique de confidentialité.
 
 > ✅ Pour changer un texte de présentation (ex. paragraphe d’intro de la galerie ou du contact), on édite directement le JSX de la page concernée.  
 > ✅ Pour changer une info légale (raison sociale, SIRET, etc.), on modifie uniquement `data/just-relax.json`.
@@ -299,10 +255,20 @@ Les mentions légales utilisent aussi `justRelaxData.legal` pour les infos soci�
 
 Les composants principaux sont dans `src/components/` :
 
-- `Hero.tsx` – section d’intro de la home.
+- `HomePage.tsx` – orchestration de l’expérience d’accueil (intro immersive + sections).
+- `ImmersiveIntro.tsx` – écran d’entrée plein écran (Framer Motion).
+- `HeroImmersif.tsx` – hero premium avec parallaxe légère et pétales de cerisier.
+- `PetalsCanvas.tsx` – Canvas 2D custom pour les pétales (hero uniquement, low-power aware).
+- `StickyHeader.tsx` – header sticky qui apparaît après ~25% de scroll.
 - `Section.tsx` – wrapper pour les sections (titre, eyebrow, CTA).
 - `CTAButtons.tsx` – boutons Appeler / Réserver / Itinéraire / Menu.
+- `DeliveryPlatforms.tsx` – section Deliveroo / Uber Eats.
+- `ServicesBadges.tsx` – liste des services en badges.
+- `PaymentsBadges.tsx` – moyens de paiement en badges.
+- `HoursSection.tsx` – section horaires & informations pratiques.
+- `MapSection.tsx` – section carte / localisation.
 - `OpeningHours.tsx` – rendu des horaires à partir de `openingHours`.
+- `GalleryLightbox.tsx` – galerie avec lightbox.
 - `GalleryGrid.tsx` – grille de photos à partir de `gallery`.
 - `MenuItemCard.tsx` – rendu d’un plat/entrée/dessert.
 - `MapEmbed.tsx` – intégration de la carte Google.

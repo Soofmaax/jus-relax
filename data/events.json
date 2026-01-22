@@ -1,0 +1,20 @@
+[
+  {
+    "id": "afterwork-jeudi",
+    "title": "Afterwork du jeudi",
+    "description": "Fin de journée en mode chill : cocktails signatures, planches à partager et lounge chicha jusqu’à 2h.",
+    "highlight": true
+  },
+  {
+    "id": "anniversaires",
+    "title": "Anniversaires & soirées entre amis",
+    "description": "Terrasse privée, espace lounge et formule sur mesure pour célébrer vos moments importants.",
+    "highlight": false
+  },
+  {
+    "id": "entreprises",
+    "title": "Afterworks & événements d’entreprise",
+    "description": "Organisation d’afterworks, réunions informelles ou soirées d’équipe à Pantin (93500).",
+    "highlight": false
+  }
+]

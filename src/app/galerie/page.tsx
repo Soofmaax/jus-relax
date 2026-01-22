@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import GalleryGrid from "@/components/GalleryGrid";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
+import GalleryLightbox from "@/components/GalleryLightbox";
 
 export const metadata: Metadata = pageSeo.galerie;
 
@@ -20,7 +21,7 @@ export default function GaleriePage() {
           <code>data/just-relax.json</code>.
         </p>
         <div className="mt-6">
-          <GalleryGrid gallery={justRelaxData.gallery} showOverlay />
+          <GalleryLightbox gallery={justRelaxData.gallery} />
         </div>
       </Section>
     </div>

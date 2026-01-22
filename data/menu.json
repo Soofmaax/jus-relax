@@ -1,0 +1,35 @@
+[
+  {
+    "id": "a-completer-entrees",
+    "name": "À compléter – Entrées",
+    "items": [
+      {
+        "name": "Exemple d’entrée",
+        "description": "Remplacez ce plat par l’une de vos entrées (nom, description, prix).",
+        "price": "00,00 €"
+      }
+    ]
+  },
+  {
+    "id": "a-completer-plats",
+    "name": "À compléter – Plats",
+    "items": [
+      {
+        "name": "Exemple de plat signature",
+        "description": "Remplacez cette entrée par votre plat signature (viande, poisson, végétarien…).",
+        "price": "00,00 €"
+      }
+    ]
+  },
+  {
+    "id": "a-completer-desserts",
+    "name": "À compléter – Desserts",
+    "items": [
+      {
+        "name": "Exemple de dessert maison",
+        "description": "Remplacez ce dessert par l’un de vos classiques (tiramisu, fondant, etc.).",
+        "price": "00,00 €"
+      }
+    ]
+  }
+]
