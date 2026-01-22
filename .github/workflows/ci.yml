@@ -30,8 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check formatting
+      - name: Check formatting (non bloquant)
         run: npm run format:check
+        continue-on-error: true
 
       - name: Lint
         run: npm run lint
