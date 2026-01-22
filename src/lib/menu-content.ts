@@ -735,6 +735,13 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
         price: "15,00 €",
       },
       {
+        name: "Pour les gentlemen accompagnés",
+        description:
+          "La première chicha est au tarif classique, la seconde est au tarif dame.",
+        price: "—",
+        isHighlight: true,
+      },
+      {
         name: "Formule Quasar + dessert (dames)",
         description:
           "Une chicha Quasar et un dessert \\\"ptit plaisir\\\", accompagnés d’une boisson soft (hors Red Bull et cocktail).",
@@ -775,6 +782,13 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
         description:
           "Une chicha Quasar, une entrée, un Just plat et un dessert \\\"ptit plaisir\\\", avec boisson soft (hors Red Bull et cocktail).",
         price: "50,00 €",
+      },
+      {
+        name: "Infos lounge & suppléments",
+        description:
+          "Pas de carafe d’eau en accompagnement pour la chicha ou dans la partie lounge. Tout supplément chicha est facturé au tarif habituel.",
+        price: "—",
+        isHighlight: true,
       },
     ],
   },
