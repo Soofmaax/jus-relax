@@ -34,6 +34,8 @@ Par défaut, l’application est accessible sur `http://localhost:3000`.
 - `npm start` – démarre le serveur Next.js en mode production (après `npm run build`).
 - `npm run lint` – exécute ESLint avec la configuration Next.js.
 - `npm run type-check` – lance TypeScript (`tsc`) en mode vérification uniquement.
+- `npm run format` – applique automatiquement le formatage Prettier sur tout le projet.
+- `npm run format:check` – vérifie que le formatage Prettier est respecté (utilisé en CI).
 
 ### Structure du projet (vue d’ensemble)
 
@@ -332,7 +334,26 @@ pointent vers la bonne URL.
 
 ---
 
-## 9. En résumé
+## 9. Qualité de code & CI GitHub
+
+Le dépôt intègre une CI GitHub Actions afin de garder le projet propre à chaque push / pull request :
+
+**Fichier :** `.github/workflows/ci.yml`
+
+Le job `CI` exécute, dans cet ordre :
+
+1. `npm install` – installation des dépendances.
+2. `npm run format:check` – vérifie que tous les fichiers respectent le format Prettier.
+3. `npm run lint` – vérifie les règles ESLint / Next.js.
+4. `npm run type-check` – vérifie les types TypeScript.
+5. `npm run build` – s’assure que l’application Next.js se build correctement.
+
+> ✅ Si une PR est rouge, ouvrir l’onglet **Actions** sur GitHub, consulter le job “CI” et lire l’étape en erreur (format, lint, types ou build).  
+> ✅ En local, la plupart des problèmes se corrigent via : `npm run format`, `npm run lint` et `npm run type-check`.
+
+---
+
+## 10. En résumé
 
 - **Données métier & coordonnées** → `data/just-relax.json`
 - **Canal de réservation & libellés CTA** → `data/just-relax.json` + `src/lib/reservation.ts`
