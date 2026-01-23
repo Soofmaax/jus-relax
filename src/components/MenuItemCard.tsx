@@ -46,11 +46,6 @@ export default function MenuItemCard({ item }: MenuItemCardProps) {
               À compléter
             </span>
           )}
-          {isHighlight && (
-            <span className="rounded-full bg-[#e8f0e6] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#5a7a52] ring-1 ring-[#7c9473]/70">
-              Info
-            </span>
-          )}
         </div>
         {item.description && (
           <p

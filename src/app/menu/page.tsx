@@ -13,9 +13,18 @@ export default function MenuPage() {
     justRelaxData.menus.find((menu) => menu.id === "just-menu") ||
     justRelaxData.menus[0];
 
-  const categoryLinks = digitalMenuCategories.map((category) => ({
-    id: category.id,
-    name: category.name,
+  const highlightItems = digitalMenuCategories.flatMap((category) =>
+    category.items
+      .filter((item) => item.isHighlight)
+      .map((item) => ({
+        ...item,
+        categoryName: category.name,
+      }))
+  );
+
+  const nonHighlightCategories = digitalMenuCategories.map((category) => ({
+    ...category,
+    items: category.items.filter((item) => !item.isHighlight),
   }));
 
   return (
@@ -80,19 +89,23 @@ export default function MenuPage() {
             : undefined
         }
       >
-        <div className="mb-5 flex snap-x gap-2 overflow-x-auto pb-1 text-xs text-[#6b5d4f]">
-          {categoryLinks.map((category) => (
-            <a
-              key={category.id}
-              href={`#${category.id}`}
-              className="snap-start rounded-full border border-[#d4c5b0] bg-[#f5ede3] px-3 py-1 font-medium transition hover:border-[#d946a6] hover:text-[#d946a6]"
-            >
-              {category.name}
-            </a>
-          ))}
-        </div>
+        {highlightItems.length > 0 && (
+          <div className="mb-6 rounded-2xl border border-[#d4c5b0] bg-[#f5ede3] p-4 text-xs text-[#6b5d4f]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+              Infos importantes
+            </p>
+            <ul className="mt-2 space-y-1.5">
+              {highlightItems.map((item) => (
+                <li key={`${item.name}-${item.categoryName}`}>
+                  <span className="font-semibold">{item.name}</span>{" "}
+                  <span>– {item.description}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {digitalMenuCategories.map((category) => (
+          {nonHighlightCategories.map((category) => (
             <section
               key={category.id}
               id={category.id}
@@ -105,20 +118,27 @@ export default function MenuPage() {
                 </h3>
               </div>
               <div className="space-y-3">
-                {category.items.map((item) => (
+                {category.items.slice(0, 3).map((item) => (
                   <MenuItemCard
                     key={`${category.id}-${item.name}`}
                     item={item}
                   />
                 ))}
+                {category.items.length > 3 && (
+                  <p className="text-[11px] text-[#6b5d4f]">
+                    ...et d&apos;autres suggestions dans cette catégorie sont
+                    visibles sur la carte complète.
+                  </p>
+                )}
               </div>
             </section>
           ))}
         </div>
-        <p className="mt-5 text-[11px] text-slate-400">
-          Cette carte digitale est un aperçu de présentation. La carte complète
-          reste disponible en PDF et pourra être mise à jour à votre demande
-          pour refléter précisément vos plats, vos prix et vos formules.
+        <p className="mt-5 text-[11px] text-[#6b5d4f]">
+          Cette carte digitale présente une sélection de catégories et de plats
+          pour une lecture rapide. La carte complète reste disponible en PDF et
+          pourra être mise à jour à votre demande pour refléter précisément vos
+          plats, vos prix et vos formules.
         </p>
       </Section>
 
