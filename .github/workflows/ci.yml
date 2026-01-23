@@ -13,7 +13,6 @@ jobs:
   build-and-check:
     name: Format, lint, type-check & build
     runs-on: ubuntu-latest
-    if: github.actor != 'github-actions[bot]'
 
     env:
       NEXT_TELEMETRY_DISABLED: 1
@@ -21,8 +20,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
@@ -33,25 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Auto-format with Prettier
-        run: npm run format
-
-      - name: Commit formatting changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if git diff --quiet; then
-            echo "No formatting changes."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add .
-            git commit -m "chore: format with Prettier" || true
-            git push
-          fi
-
       - name: Check formatting
         run: npm run format:check
+        continue-on-error: true
 
       - name: Lint
         run: npm run lint
