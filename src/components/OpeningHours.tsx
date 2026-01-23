@@ -6,8 +6,8 @@ interface OpeningHoursProps {
 
 export default function OpeningHours({ ranges }: OpeningHoursProps) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/40 p-5 text-sm shadow-lg shadow-black/40 sm:p-6">
-      <h3 className="text-sm font-semibold text-slate-50">
+    <div className="rounded-2xl border border-[#d4c5b0] bg-[#f5ede3] p-5 text-sm shadow-md shadow-black/10 sm:p-6">
+      <h3 className="text-sm font-semibold text-[#2d2416]">
         Horaires d&apos;ouverture
       </h3>
       <div className="mt-3 space-y-3">
@@ -16,17 +16,17 @@ export default function OpeningHours({ ranges }: OpeningHoursProps) {
             key={range.days}
             className="flex items-baseline justify-between gap-4"
           >
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-300">
+            <p className="text-xs font-medium uppercase tracking-wide text-[#6b5d4f]">
               {range.days}
             </p>
-            <div className="text-right text-xs text-slate-100">
+            <div className="text-right text-xs text-[#2d2416]">
               {range.slots.map((slot) => (
                 <div key={`${range.days}-${slot.from}-${slot.to}`}>
                   <span>
                     {slot.from} – {slot.to}
                   </span>
                   {slot.label && (
-                    <span className="ml-1 text-slate-400">({slot.label})</span>
+                    <span className="ml-1 text-[#6b5d4f]">({slot.label})</span>
                   )}
                 </div>
               ))}
@@ -34,7 +34,7 @@ export default function OpeningHours({ ranges }: OpeningHoursProps) {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-[11px] text-slate-400">
+      <p className="mt-4 text-[11px] text-[#6b5d4f]">
         Les horaires peuvent varier les jours fériés ou lors d&apos;événements
         privés. N&apos;hésitez pas à appeler le restaurant pour confirmation.
       </p>

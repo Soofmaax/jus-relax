@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { SITE_URL, defaultLocale } from "@/lib/seo";
@@ -15,6 +15,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-just-display",
   subsets: ["latin"],
 });
 
@@ -86,6 +91,39 @@ export default function RootLayout({
     })
     .filter((v): v is string => Boolean(v));
 
+  const openingHoursSpecification = justRelaxData.openingHours.flatMap(
+    (range) => {
+      const text = range.days.toLowerCase();
+      const slot = range.slots[0];
+      if (!slot) {
+        return [];
+      }
+
+      const days: string[] = [];
+
+      if (text.includes("lundi") && text.includes("vendredi")) {
+        days.push("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
+      } else if (text.includes("samedi") && text.includes("dimanche")) {
+        days.push("Saturday", "Sunday");
+      } else {
+        if (text.includes("lundi")) days.push("Monday");
+        if (text.includes("mardi")) days.push("Tuesday");
+        if (text.includes("mercredi")) days.push("Wednesday");
+        if (text.includes("jeudi")) days.push("Thursday");
+        if (text.includes("vendredi")) days.push("Friday");
+        if (text.includes("samedi")) days.push("Saturday");
+        if (text.includes("dimanche")) days.push("Sunday");
+      }
+
+      return days.map((day) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: `https://schema.org/${day}`,
+        opens: slot.from,
+        closes: slot.to,
+      }));
+    }
+  );
+
   const socialLinks = Object.values(justRelaxData.social).filter(
     (value): value is string => Boolean(value && value.trim().length > 0)
   );
@@ -111,9 +149,11 @@ export default function RootLayout({
       streetAddress: justRelaxData.contact.address.line1,
       postalCode: justRelaxData.contact.address.postalCode,
       addressLocality: justRelaxData.contact.address.city,
+      addressRegion: "Île-de-France",
       addressCountry: justRelaxData.contact.address.country,
     },
     openingHours: openingHoursForSchema,
+    openingHoursSpecification,
     priceRange: "€€",
     servesCuisine: [
       "Cuisine variée",
@@ -122,6 +162,7 @@ export default function RootLayout({
       "Tapas",
     ],
     acceptsReservations: true,
+    hasMap: justRelaxData.contact.address.mapUrl || undefined,
     areaServed: {
       "@type": "City",
       name: justRelaxData.contact.address.city,
@@ -140,22 +181,48 @@ export default function RootLayout({
     };
   }
 
+  if (justRelaxData.contact.phoneMain) {
+    (jsonLd as Record<string, unknown>).contactPoint = [
+      {
+        "@type": "ContactPoint",
+        telephone: justRelaxData.contact.phoneMain,
+        contactType: "reservations",
+        areaServed: "FR",
+        availableLanguage: [defaultLocale],
+      },
+    ];
+  }
+
+  const websiteJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: justRelaxData.name,
+    inLanguage: defaultLocale,
+  };
+
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-slate-50`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#faf8f3] text-[#2d2416]`}
       >
         <script
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#faf8f3] via-[#f5ede3] to-[#eae1d5]">
           <StickyHeader />
           <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
             {children}
           </main>
-          <footer className="border-t border-white/10 bg-black/70">
+          <footer className="border-t border-[#d4c5b0] bg-[#2d2416]">
             <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
               <div>
                 <p className="text-sm font-semibold text-slate-100">

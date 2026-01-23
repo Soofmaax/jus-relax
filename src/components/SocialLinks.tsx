@@ -49,7 +49,7 @@ export default function SocialLinks({ social, demo = false }: SocialLinksProps) 
             href={item.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center rounded-full border border-white/25 px-3 py-1 text-[11px] font-medium text-slate-100 transition hover:border-amber-300/80 hover:text-amber-200"
+            className="inline-flex items-center rounded-full border border-[#d4c5b0] px-3 py-1 text-[11px] font-medium text-[#2d2416] transition hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
           >
             {item.label}
           </a>
@@ -57,7 +57,7 @@ export default function SocialLinks({ social, demo = false }: SocialLinksProps) 
           demo && (
             <span
               key={item.key}
-              className="inline-flex items-center rounded-full border border-white/15 px-3 py-1 text-[11px] font-medium text-slate-300/70 opacity-70"
+              className="inline-flex items-center rounded-full border border-[#d4c5b0]/70 px-3 py-1 text-[11px] font-medium text-[#6b5d4f]/80 opacity-70"
             >
               {item.label}
             </span>
@@ -65,7 +65,7 @@ export default function SocialLinks({ social, demo = false }: SocialLinksProps) 
         )
       )}
       {demo && (
-        <span className="text-[11px] text-slate-400">
+        <span className="text-[11px] text-[#6b5d4f]">
           Les liens vers vos comptes officiels seront ajoutés ici une fois connus.
         </span>
       )}

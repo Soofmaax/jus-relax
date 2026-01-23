@@ -56,44 +56,44 @@ export default function StickyHeader() {
       }
       style={{ pointerEvents: isVisible ? "auto" : "none" }}
     >
-      <div className="border-b border-white/10 bg-black/70/90 backdrop-blur-xl">
+      <div className="border-b border-[#d4c5b0] bg-[#faf8f3]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6">
           <Link href="/" className="flex items-baseline gap-2">
-            <span className="text-sm font-semibold tracking-tight uppercase text-amber-300 sm:text-base">
+            <span className="text-sm font-semibold tracking-tight uppercase text-[#2d2416] sm:text-base">
               {justRelaxData.name}
             </span>
-            <span className="hidden text-[11px] text-slate-300 sm:inline">
+            <span className="hidden text-[11px] text-[#6b5d4f] sm:inline">
               {justRelaxData.tagline}
             </span>
           </Link>
-          <nav className="flex items-center gap-3 text-[11px] font-medium sm:gap-5 sm:text-xs">
+          <nav className="flex items-center gap-3 text-[11px] font-medium text-[#2d2416] sm:gap-5 sm:text-xs">
             <Link
               href="/menu"
-              className="text-slate-200 transition-colors hover:text-amber-300"
+              className="transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6]"
             >
               Menu
             </Link>
             <Link
               href="/reservation"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Réserver
             </Link>
             <Link
               href="/galerie"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Galerie
             </Link>
             <Link
               href="/evenements"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Événements
             </Link>
             <Link
               href="/contact"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Contact
             </Link>
@@ -102,13 +102,13 @@ export default function StickyHeader() {
                 href={reservation.href}
                 target={reservation.target}
                 rel={reservation.rel}
-                className="hidden rounded-full bg-amber-400 px-3 py-1.5 text-[11px] font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:inline-flex"
+                className="hidden rounded-full bg-[#d946a6] px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fce7f3] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3] sm:inline-flex"
               >
                 {reservation.label}
               </a>
               <a
                 href={phoneHref}
-                className="inline-flex rounded-full border border-white/30 px-3 py-1.5 text-[11px] font-semibold text-slate-100 shadow-sm transition hover:border-amber-300/80 hover:text-amber-200"
+                className="inline-flex rounded-full border border-[#d4c5b0] px-3 py-1.5 text-[11px] font-semibold text-[#2d2416] shadow-sm transition hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
               >
                 Appeler
               </a>

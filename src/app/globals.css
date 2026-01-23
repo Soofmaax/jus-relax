@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #e5e7eb;
+  --background: #faf8f3;
+  --foreground: #2d2416;
 }
 
 @theme inline {
@@ -10,10 +10,18 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-just-display);
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom, #faf8f3 0%, #f5ede3 45%, #eae1d5 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+}
+
+h1,
+h2,
+.font-display {
+  font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+  letter-spacing: 0.04em;
 }

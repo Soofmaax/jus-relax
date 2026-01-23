@@ -42,22 +42,21 @@
     }
   ],
   "services": [
-    "Accessible aux personnes à mobilité réduite",
+    "Accès PMR",
     "Climatisation",
     "Terrasse",
     "Événements privés",
-    "Coin fumeurs",
+    "Espace fumeurs",
     "À emporter",
-    "Réceptions de mariage",
+    "Réceptions",
     "Wi-Fi gratuit"
   ],
   "paymentMethods": [
     "Espèces",
-    "Paiement sans contact",
-    "MasterCard",
+    "Sans contact",
+    "Carte bancaire",
     "Ticket Restaurant®",
-    "VISA",
-    "Carte ticket restaurant",
+    "Carte titre-restaurant",
     "Carte de débit",
     "Apple Pay",
     "Maestro"

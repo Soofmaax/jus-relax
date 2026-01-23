@@ -24,7 +24,7 @@ export default function GalleryGrid({
 
   if (visibleImages.length === 0) {
     return (
-      <p className="text-sm text-slate-300">
+      <p className="text-sm text-[#6b5d4f]">
         Aucune image trouvée dans la galerie. Vous pouvez ajouter des URLs
         d&apos;images dans <code>data/just-relax.json</code>, section{" "}
         <code>gallery</code>.
@@ -37,7 +37,7 @@ export default function GalleryGrid({
       {visibleImages.map((image, index) => (
         <figure
           key={`${image.groupId}-${index}-${image.url}`}
-          className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-lg shadow-black/50"
+          className="group relative overflow-hidden rounded-2xl border border-[#d4c5b0] bg-[#faf8f3] shadow-lg shadow-black/10"
         >
           <Image
             src={image.url}
@@ -47,10 +47,10 @@ export default function GalleryGrid({
             className="h-36 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-44 md:h-52"
           />
           {showOverlay && (
-            <figcaption className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-[11px] text-slate-100 opacity-0 transition group-hover:opacity-100 sm:p-4">
+            <figcaption className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-[#2d2416]/80 via-[#2d2416]/40 to-transparent p-3 text-[11px] text-[#faf8f3] opacity-0 transition group-hover:opacity-100 sm:p-4">
               <div>
                 <p className="font-semibold">{image.groupTitle}</p>
-                <p className="text-slate-300">{image.alt}</p>
+                <p className="text-[#f5ede3]">{image.alt}</p>
               </div>
             </figcaption>
           )}

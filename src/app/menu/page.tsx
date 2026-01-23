@@ -2,123 +2,287 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import MenuItemCard from "@/components/MenuItemCard";
+import PremiumMenuOverlay from "@/components/PremiumMenuOverlay";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 import { digitalMenuCategories } from "@/lib/menu-content";
 
 export const metadata: Metadata = pageSeo.menu;
 
-export default function MenuPage() {
-  const mainPdf =
-    justRelaxData.menus.find((menu) => menu.id === "just-menu") ||
-    justRelaxData.menus[0];
+function parsePriceForSchema(raw?: string | null): string | undefined {
+  if (!raw) return undefined;
+  const match = raw.match(/[\d.,]+/);
+  if (!match) return undefined;
+  const normalized = match[0].replace(/\./g, "").replace(",", ".");
+  const value = Number.parseFloat(normalized);
+  if (Number.isNaN(value)) return undefined;
+  return value.toFixed(2);
+}
 
-  const categoryLinks = digitalMenuCategories.map((category) => ({
-    id: category.id,
-    name: category.name,
+export default function MenuPage() {
+  const highlightItems = digitalMenuCategories.flatMap((category) =>
+    category.items
+      .filter((item) => item.isHighlight)
+      .map((item) => ({
+        ...item,
+        categoryName: category.name,
+      }))
+  );
+
+  const nonHighlightCategories = digitalMenuCategories.map((category) => ({
+    ...category,
+    items: category.items.filter((item) => !item.isHighlight),
   }));
+
+  const cuisineCategoryIds = [
+    "burgers-gourmet",
+    "pizzas",
+    "desserts",
+  ];
+
+  const drinksCategoryIds = [
+    "cocktails-signature",
+    "cocktails-sans-alcool",
+    "boissons-soft",
+  ];
+
+  const chichaCategoryIds = ["just-chicha", "formules-chicha"];
+
+  const cuisineCategories = nonHighlightCategories.filter((category) =>
+    cuisineCategoryIds.includes(category.id)
+  );
+  const drinksCategories = nonHighlightCategories.filter((category) =>
+    drinksCategoryIds.includes(category.id)
+  );
+  const chichaCategories = nonHighlightCategories.filter((category) =>
+    chichaCategoryIds.includes(category.id)
+  );
+
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+
+  const menuSections = digitalMenuCategories
+    .map((category) => {
+      const items = category.items.filter((item) => !item.isHighlight);
+      if (items.length === 0) {
+        return undefined;
+      }
+      return {
+        "@type": "MenuSection",
+        name: category.name,
+        hasMenuItem: items.map((item) => {
+          const price = parsePriceForSchema(item.price);
+          const offer =
+            price !== undefined
+              ? {
+                  "@type": "Offer",
+                  price,
+                  priceCurrency: "EUR",
+                }
+              : undefined;
+
+          return {
+            "@type": "MenuItem",
+            name: item.name,
+            description: item.description,
+            ...(offer ? { offers: offer } : {}),
+          };
+        }),
+      };
+    })
+    .filter(
+      (section): section is NonNullable<typeof section> => Boolean(section)
+    );
+
+  const menuJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "@id": `${baseUrl}/menu#digital-menu`,
+    name: `Carte & menus – ${justRelaxData.name}`,
+    inLanguage: "fr-FR",
+    hasMenuSection: menuSections,
+  };
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
-      <Section
-        title="Nos cartes"
-        eyebrow="Just Menu · Just Boisson · Just Chicha"
-      >
-        <p className="max-w-2xl text-sm text-slate-200/90">
-          Carte des plats, des boissons et des chichas : découvrez l&apos;univers
-          Just Relax. Les cartes PDF vous permettent de consulter le détail
-          complet, tandis que la carte digitale ci-dessous offre une lecture
-          confortable sur mobile.
-        </p>
-        <p className="mt-3 max-w-2xl text-xs font-medium text-amber-200">
-          Tous nos plats sont préparés avec une cuisine 100 % halal.
-        </p>
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          {justRelaxData.menus.map((menu) => (
-            <div
-              key={menu.id}
-              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-md shadow-black/40"
-            >
-              <div>
-                <h3 className="text-base font-semibold text-slate-50">
-                  {menu.name}
-                </h3>
-                {menu.description && (
-                  <p className="mt-2 text-xs text-slate-300">
-                    {menu.description}
-                  </p>
-                )}
-              </div>
-              <div className="mt-4 flex flex-wrap gap-3 text-xs">
-                {menu.pdfUrl && (
-                  <a
-                    href={menu.pdfUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center rounded-full bg-amber-400 px-4 py-2 font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
-                  >
-                    Consulter le PDF
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Carte & menus" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Carte & menus", href: "/menu" },
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+      />
+      <PremiumMenuOverlay />
       <Section
         id="carte-digitale"
-        title="Carte digitale (aperçu)"
-        eyebrow="Idéale pour une consultation sur mobile"
+        title="Carte digitale"
+        eyebrow="Un aperçu clair de notre univers"
         background="subtle"
-        cta={
-          mainPdf?.pdfUrl
-            ? {
-                label: "Télécharger le PDF",
-                href: mainPdf.pdfUrl,
-              }
-            : undefined
-        }
       >
-        <div className="mb-5 flex snap-x gap-2 overflow-x-auto pb-1 text-xs text-slate-100/90">
-          {categoryLinks.map((category) => (
-            <a
-              key={category.id}
-              href={`#${category.id}`}
-              className="snap-start rounded-full border border-white/20 bg-black/40 px-3 py-1 font-medium transition hover:border-amber-300/80 hover:text-amber-200"
-            >
-              {category.name}
-            </a>
-          ))}
-        </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {digitalMenuCategories.map((category) => (
-            <section
-              key={category.id}
-              id={category.id}
-              className="space-y-4"
-              aria-label={category.name}
-            >
+        {highlightItems.length > 0 && (
+          <div className="mb-6 rounded-2xl border border-[#d4c5b0] bg-[#f5ede3] p-4 text-xs text-[#6b5d4f]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+              Infos importantes
+            </p>
+            <ul className="mt-2 space-y-1.5">
+              {highlightItems.map((item) => (
+                <li key={`${item.name}-${item.categoryName}`}>
+                  <span className="font-semibold">{item.name}</span>{" "}
+                  <span>– {item.description}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {cuisineCategories.length > 0 && (
+          <div className="space-y-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
               <div>
-                <h3 className="text-sm font-semibold text-slate-50">
-                  {category.name}
-                </h3>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+                  Cuisine &amp; plats
+                </p>
+                <h2 className="text-base font-semibold text-[#2d2416]">
+                  Burgers, pâtes, pizzas &amp; spécialités maison
+                </h2>
               </div>
-              <div className="space-y-3">
-                {category.items.map((item) => (
-                  <MenuItemCard
-                    key={`${category.id}-${item.name}`}
-                    item={item}
-                  />
-                ))}
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {cuisineCategories.map((category) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="space-y-3"
+                  aria-label={category.name}
+                >
+                  <h3 className="text-sm font-semibold text-[#2d2416]">
+                    {category.name}
+                  </h3>
+                  <div className="space-y-3">
+                    {category.items.slice(0, 2).map((item) => (
+                      <MenuItemCard
+                        key={`${category.id}-${item.name}`}
+                        item={item}
+                      />
+                    ))}
+                    {category.items.length > 2 && (
+                      <p className="text-[11px] text-[#6b5d4f]">
+                        ...et d&apos;autres suggestions dans cette catégorie sont
+                        disponibles au restaurant et pourront être ajoutées au
+                        menu digital.
+                      </p>
+                    )}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {drinksCategories.length > 0 && (
+          <div className="mt-8 space-y-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+                  Boissons &amp; cocktails
+                </p>
+                <h2 className="text-base font-semibold text-[#2d2416]">
+                  Cocktails signatures, softs &amp; boissons chaudes
+                </h2>
               </div>
-            </section>
-          ))}
-        </div>
-        <p className="mt-5 text-[11px] text-slate-400">
-          Cette carte digitale est un aperçu de présentation. La carte complète
-          reste disponible en PDF et pourra être mise à jour à votre demande
-          pour refléter précisément vos plats, vos prix et vos formules.
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {drinksCategories.map((category) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="space-y-3"
+                  aria-label={category.name}
+                >
+                  <h3 className="text-sm font-semibold text-[#2d2416]">
+                    {category.name}
+                  </h3>
+                  <div className="space-y-3">
+                    {category.items.slice(0, 2).map((item) => (
+                      <MenuItemCard
+                        key={`${category.id}-${item.name}`}
+                        item={item}
+                      />
+                    ))}
+                    {category.items.length > 2 && (
+                      <p className="text-[11px] text-[#6b5d4f]">
+                        ...et d&apos;autres suggestions dans cette catégorie sont
+                        disponibles au restaurant et pourront être ajoutées au
+                        menu digital.
+                      </p>
+                    )}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {chichaCategories.length > 0 && (
+          <div className="mt-8 space-y-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+                  Chicha &amp; lounge
+                </p>
+                <h2 className="text-base font-semibold text-[#2d2416]">
+                  Carte chicha &amp; formules lounge
+                </h2>
+              </div>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {chichaCategories.map((category) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="space-y-3"
+                  aria-label={category.name}
+                >
+                  <h3 className="text-sm font-semibold text-[#2d2416]">
+                    {category.name}
+                  </h3>
+                  <div className="space-y-3">
+                    {category.items.slice(0, 2).map((item) => (
+                      <MenuItemCard
+                        key={`${category.id}-${item.name}`}
+                        item={item}
+                      />
+                    ))}
+                    {category.items.length > 2 && (
+                      <p className="text-[11px] text-[#6b5d4f]">
+                        ...et d&apos;autres suggestions dans cette catégorie sont
+                        disponibles au restaurant et pourront être ajoutées au
+                        menu digital.
+                      </p>
+                    )}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <p className="mt-5 text-[11px] text-[#6b5d4f]">
+          Ce menu digital est pensé pour être lisible d&apos;un coup d&apos;œil, sur mobile
+          comme sur ordinateur. Pour parcourir l&apos;ensemble des plats, boissons
+          et chichas, ouvrez la carte immersive en haut à droite.
         </p>
       </Section>
 
@@ -129,9 +293,9 @@ export default function MenuPage() {
         background="subtle"
       >
         <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-center">
-          <div className="space-y-3 text-sm text-slate-100/90">
+          <div className="space-y-3 text-sm text-[#6b5d4f]">
             <p>
-              Pour vos repas, anniversaires, afterworks ou événements privés,{" "}
+              Pour vos repas, anniversaires, afterworks ou événements privés,{` `}
               <span className="font-semibold">{justRelaxData.name}</span> vous
               accueille dans un cadre cosy avec terrasse et espace lounge.
             </p>

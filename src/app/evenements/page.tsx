@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 
 export const metadata: Metadata = pageSeo.evenements;
@@ -30,15 +33,47 @@ export default function EvenementsPage() {
     },
   ];
 
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${baseUrl}/evenements#faq`,
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Privatisation & événements" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Privatisation & événements", href: "/evenements" },
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Section
         title="Privatisation & événements privés"
         eyebrow="Événements · Afterworks · Réceptions"
         background="subtle"
       >
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
-          <div className="space-y-4 text-sm text-slate-100/90">
+          <div className="space-y-4 text-sm text-[#6b5d4f]">
             <p>
               Pour vos anniversaires, afterworks, soirées d&apos;entreprise ou
               événements privés,{` `}
@@ -61,12 +96,12 @@ export default function EvenementsPage() {
               <CTAButtons data={justRelaxData} layout="stacked" />
             </div>
           </div>
-          <div className="space-y-4 text-sm text-slate-100/90">
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
-              <h2 className="text-sm font-semibold text-amber-300">
+          <div className="space-y-4 text-sm text-[#6b5d4f]">
+            <div className="rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-5 shadow-md shadow-black/10">
+              <h2 className="text-sm font-semibold text-[#d946a6]">
                 Types d&apos;événements
               </h2>
-              <ul className="mt-3 space-y-2 text-xs text-slate-200">
+              <ul className="mt-3 space-y-2 text-xs text-[#6b5d4f]">
                 <li>• Anniversaires, soirées entre amis</li>
                 <li>• Afterworks &amp; soirées d&apos;entreprise</li>
                 <li>• Réunions d&apos;équipe, lancements de projet</li>
@@ -74,11 +109,11 @@ export default function EvenementsPage() {
                 <li>• Privatisation partielle ou totale sur demande</li>
               </ul>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
-              <h2 className="text-sm font-semibold text-amber-300">
+            <div className="rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-5 shadow-md shadow-black/10">
+              <h2 className="text-sm font-semibold text-[#d946a6]">
                 Informations pratiques
               </h2>
-              <ul className="mt-3 space-y-2 text-xs text-slate-200">
+              <ul className="mt-3 space-y-2 text-xs text-[#6b5d4f]">
                 <li>
                   • Capacité indicative : à ajuster selon la configuration et la
                   saison (intérieur / terrasse).
@@ -90,7 +125,7 @@ export default function EvenementsPage() {
                   (métro / bus / voiture).
                 </li>
               </ul>
-              <p className="mt-3 text-[11px] text-slate-400">
+              <p className="mt-3 text-[11px] text-[#6b5d4f]">
                 Les modalités précises (nombre de personnes, budget, horaires)
                 seront définies ensemble lors de la demande de devis.
               </p>
@@ -104,19 +139,19 @@ export default function EvenementsPage() {
         eyebrow="FAQ événements"
         background="subtle"
       >
-        <div className="space-y-4 text-sm text-slate-100/90">
+        <div className="space-y-4 text-sm text-[#6b5d4f]">
           {faq.map((item) => (
             <div
               key={item.question}
-              className="rounded-2xl border border-white/10 bg-black/40 p-4 text-sm shadow-md shadow-black/40"
+              className="rounded-2xl border border-[#d4c5b0] bg-[#faf8f3] p-4 text-sm shadow-md shadow-black/10"
             >
-              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
                 {item.question}
               </h3>
-              <p className="mt-2 text-xs text-slate-200">{item.answer}</p>
+              <p className="mt-2 text-xs text-[#6b5d4f]">{item.answer}</p>
             </div>
           ))}
-          <p className="mt-3 text-[11px] text-slate-400">
+          <p className="mt-3 text-[11px] text-[#6b5d4f]">
             Pour toute demande spécifique (DJ, décoration, privatisation totale
             en dehors des horaires habituels, etc.), n&apos;hésitez pas à nous
             contacter : nous étudierons votre projet en détail.
