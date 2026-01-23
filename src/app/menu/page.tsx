@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import MenuItemCard from "@/components/MenuItemCard";
+import PremiumMenuOverlay from "@/components/PremiumMenuOverlay";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 import { digitalMenuCategories } from "@/lib/menu-content";
@@ -75,6 +76,7 @@ export default function MenuPage() {
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
+      <PremiumMenuOverlay />
       <Section
         id="carte-digitale"
         title="Carte digitale"
@@ -127,6 +129,13 @@ export default function MenuPage() {
                         item={item}
                       />
                     ))}
+                    {category.items.length > 3 && (
+                      <p className="text-[11px] text-[#6b5d4f]">
+                        ...et d&apos;autres suggestions dans cette catégorie sont
+                        disponibles au restaurant et pourront être ajoutées au
+                        menu digital.
+                      </p>
+                    )}
                   </div>
                 </section>
               ))}
@@ -164,6 +173,13 @@ export default function MenuPage() {
                         item={item}
                       />
                     ))}
+                    {category.items.length > 3 && (
+                      <p className="text-[11px] text-[#6b5d4f]">
+                        ...et d&apos;autres suggestions dans cette catégorie sont
+                        disponibles au restaurant et pourront être ajoutées au
+                        menu digital.
+                      </p>
+                    )}
                   </div>
                 </section>
               ))}
@@ -201,6 +217,13 @@ export default function MenuPage() {
                         item={item}
                       />
                     ))}
+                    {category.items.length > 3 && (
+                      <p className="text-[11px] text-[#6b5d4f]">
+                        ...et d&apos;autres suggestions dans cette catégorie sont
+                        disponibles au restaurant et pourront être ajoutées au
+                        menu digital.
+                      </p>
+                    )}
                   </div>
                 </section>
               ))}
