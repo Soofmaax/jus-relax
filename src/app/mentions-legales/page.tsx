@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 
@@ -10,6 +12,18 @@ export default function MentionsLegalesPage() {
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Mentions légales" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Mentions légales", href: "/mentions-legales" },
+        ]}
+      />
       <Section title="Mentions légales" eyebrow="Informations réglementaires" background="subtle">
         <div className="space-y-6 text-sm text-[#6b5d4f]">
           <div className="grid gap-4 md:grid-cols-2">

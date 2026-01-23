@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 
@@ -8,6 +10,18 @@ export const metadata: Metadata = pageSeo.protectionDonnees;
 export default function ProtectionDesDonneesPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-8">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Protection des données" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Protection des données", href: "/protection-des-donnees" },
+        ]}
+      />
       <Section
         title="Protection des données"
         eyebrow="Politique de confidentialité"

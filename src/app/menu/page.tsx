@@ -3,6 +3,8 @@ import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import MenuItemCard from "@/components/MenuItemCard";
 import PremiumMenuOverlay from "@/components/PremiumMenuOverlay";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 import { digitalMenuCategories } from "@/lib/menu-content";
@@ -50,6 +52,18 @@ export default function MenuPage() {
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Carte & menus" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Carte & menus", href: "/menu" },
+        ]}
+      />
       <PremiumMenuOverlay />
       <Section
         id="carte-digitale"

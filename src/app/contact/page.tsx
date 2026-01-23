@@ -3,6 +3,8 @@ import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import SocialLinks from "@/components/SocialLinks";
 import MapEmbed from "@/components/MapEmbed";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 import ContactForm from "@/components/ContactForm";
@@ -26,6 +28,18 @@ export default function ContactPage() {
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Contact" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Contact", href: "/contact" },
+        ]}
+      />
       <Section title="Contact" eyebrow="Nous écrire ou réserver">
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
           <div className="space-y-5 text-sm text-[#6b5d4f]">

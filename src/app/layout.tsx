@@ -102,7 +102,7 @@ export default function RootLayout({
       .map((menu) => menu.pdfUrl as string),
   ];
 
-  const jsonLd: Record<string, unknown> = {
+  const jsonLd: Record&lt;string, unknown&gt; = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "@id": `${SITE_URL}/#restaurant`,
@@ -116,6 +116,7 @@ export default function RootLayout({
       streetAddress: justRelaxData.contact.address.line1,
       postalCode: justRelaxData.contact.address.postalCode,
       addressLocality: justRelaxData.contact.address.city,
+      addressRegion: "Île-de-France",
       addressCountry: justRelaxData.contact.address.country,
     },
     openingHours: openingHoursForSchema,
@@ -131,19 +132,28 @@ export default function RootLayout({
       "@type": "City",
       name: justRelaxData.contact.address.city,
     },
-    sameAs: socialLinks.length > 0 ? socialLinks : undefined,
+    sameAs: socialLinks.length &gt; 0 ? socialLinks : undefined,
     hasMenu: menuUrls,
   };
 
   const { latitude, longitude } = justRelaxData.contact.address;
 
-  if (latitude && longitude) {
-    (jsonLd as Record<string, unknown>).geo = {
+  if (latitude &amp;&amp; longitude) {
+    (jsonLd as Record&lt;string, unknown&gt;).geo = {
       "@type": "GeoCoordinates",
       latitude,
       longitude,
     };
   }
+
+  const websiteJsonLd: Record&lt;string, unknown&gt; = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: justRelaxData.name,
+    inLanguage: defaultLocale,
+  };
 
   return (
     <html lang="fr">
@@ -154,6 +164,11 @@ export default function RootLayout({
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#faf8f3] via-[#f5ede3] to-[#eae1d5]">
           <StickyHeader />

@@ -3,6 +3,8 @@ import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import OpeningHours from "@/components/OpeningHours";
 import MapEmbed from "@/components/MapEmbed";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 
@@ -13,6 +15,18 @@ export default function ReservationPage() {
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-8">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Réserver une table" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Réserver une table", href: "/reservation" },
+        ]}
+      />
       <Section
         title="Réserver une table"
         eyebrow="Just Relax — Restaurant &amp; Lounge"

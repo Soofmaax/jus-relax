@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
 
@@ -32,6 +34,18 @@ export default function EvenementsPage() {
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
+      <Breadcrumbs
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Privatisation & événements" },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { label: "Accueil", href: "/" },
+          { label: "Privatisation & événements", href: "/evenements" },
+        ]}
+      />
       <Section
         title="Privatisation & événements privés"
         eyebrow="Événements · Afterworks · Réceptions"
