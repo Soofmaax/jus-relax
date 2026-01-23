@@ -6,12 +6,44 @@ import MapEmbed from "@/components/MapEmbed";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 
 export const metadata: Metadata = pageSeo.reservation;
 
 export default function ReservationPage() {
   const mapUrl = justRelaxData.contact.address.mapUrl;
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+  const phone = justRelaxData.contact.phoneMain;
+
+  const reservationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${baseUrl}/reservation#reservation-page`,
+    url: `${baseUrl}/reservation`,
+    name: `Réservation – ${justRelaxData.name}`,
+    inLanguage: "fr-FR",
+    about: {
+      "@id": `${baseUrl}/#restaurant`,
+    },
+    ...(phone
+      ? {
+          potentialAction: {
+            "@type": "ReserveAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `tel:${phone.replace(/\s+/g, "")}`,
+            },
+            result: {
+              "@type": "Reservation",
+              provider: {
+                "@id": `${baseUrl}/#restaurant`,
+              },
+            },
+          },
+        }
+      : {}),
+  };
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-8">
@@ -26,6 +58,11 @@ export default function ReservationPage() {
           { label: "Accueil", href: "/" },
           { label: "Réserver une table", href: "/reservation" },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reservationJsonLd) }}
       />
       <Section
         title="Réserver une table"

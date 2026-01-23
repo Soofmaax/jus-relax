@@ -6,10 +6,21 @@ import PremiumMenuOverlay from "@/components/PremiumMenuOverlay";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 import { digitalMenuCategories } from "@/lib/menu-content";
 
 export const metadata: Metadata = pageSeo.menu;
+
+function parsePriceForSchema(raw?: string | null): string | undefined {
+  if (!raw) return undefined;
+  const match = raw.match(/[\d.,]+/);
+  if (!match) return undefined;
+  const normalized = match[0].replace(/\./g, "").replace(",", ".");
+  const value = Number.parseFloat(normalized);
+  if (Number.isNaN(value)) return undefined;
+  return value.toFixed(2);
+}
 
 export default function MenuPage() {
   const highlightItems = digitalMenuCategories.flatMap((category) =>
@@ -50,6 +61,50 @@ export default function MenuPage() {
     chichaCategoryIds.includes(category.id)
   );
 
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+
+  const menuSections = digitalMenuCategories
+    .map((category) => {
+      const items = category.items.filter(
+        (item) => !item.isHighlight && !item.isPlaceholder
+      );
+      if (items.length === 0) {
+        return undefined;
+      }
+      return {
+        "@type": "MenuSection",
+        name: category.name,
+        hasMenuItem: items.map((item) => {
+          const price = parsePriceForSchema(item.price);
+          const offer =
+            price !== undefined
+              ? {
+                  "@type": "Offer",
+                  price,
+                  priceCurrency: "EUR",
+                }
+              : undefined;
+
+          return {
+            "@type": "MenuItem",
+            name: item.name,
+            description: item.description,
+            ...(offer ? { offers: offer } : {}),
+          };
+        }),
+      };
+    })
+    .filter((section): section is Record<string, unknown> => Boolean(section));
+
+  const menuJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "@id": `${baseUrl}/menu#digital-menu`,
+    name: `Carte & menus – ${justRelaxData.name}`,
+    inLanguage: "fr-FR",
+    hasMenuSection: menuSections,
+  };
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Breadcrumbs
@@ -63,6 +118,11 @@ export default function MenuPage() {
           { label: "Accueil", href: "/" },
           { label: "Carte & menus", href: "/menu" },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
       />
       <PremiumMenuOverlay />
       <Section

@@ -181,6 +181,18 @@ export default function RootLayout({
     };
   }
 
+  if (justRelaxData.contact.phoneMain) {
+    (jsonLd as Record&lt;string, unknown&gt;).contactPoint = [
+      {
+        "@type": "ContactPoint",
+        telephone: justRelaxData.contact.phoneMain,
+        contactType: "reservations",
+        areaServed: "FR",
+        availableLanguage: [defaultLocale],
+      },
+    ];
+  }
+
   const websiteJsonLd: Record&lt;string, unknown&gt; = {
     "@context": "https://schema.org",
     "@type": "WebSite",
