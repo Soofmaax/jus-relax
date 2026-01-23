@@ -9,10 +9,6 @@ import { digitalMenuCategories } from "@/lib/menu-content";
 export const metadata: Metadata = pageSeo.menu;
 
 export default function MenuPage() {
-  const mainPdf =
-    justRelaxData.menus.find((menu) => menu.id === "just-menu") ||
-    justRelaxData.menus[0];
-
   const highlightItems = digitalMenuCategories.flatMap((category) =>
     category.items
       .filter((item) => item.isHighlight)
@@ -30,64 +26,10 @@ export default function MenuPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section
-        title="Nos cartes"
-        eyebrow="Just Menu · Just Boisson · Just Chicha"
-      >
-        <p className="max-w-2xl text-sm text-[#6b5d4f]">
-          Carte des plats, des boissons et des chichas : découvrez l&apos;univers
-          Just Relax. Les cartes PDF vous permettent de consulter le détail
-          complet, tandis que la carte digitale ci-dessous offre une lecture
-          confortable sur mobile.
-        </p>
-        <p className="mt-3 max-w-2xl text-xs font-medium text-[#d946a6]">
-          Tous nos plats sont préparés avec une cuisine 100 % halal.
-        </p>
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          {justRelaxData.menus.map((menu) => (
-            <div
-              key={menu.id}
-              className="flex flex-col justify-between rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-5 shadow-md shadow-black/10"
-            >
-              <div>
-                <h3 className="text-base font-semibold text-[#2d2416]">
-                  {menu.name}
-                </h3>
-                {menu.description && (
-                  <p className="mt-2 text-xs text-[#6b5d4f]">
-                    {menu.description}
-                  </p>
-                )}
-              </div>
-              <div className="mt-4 flex flex-wrap gap-3 text-xs">
-                {menu.pdfUrl && (
-                  <a
-                    href={menu.pdfUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center rounded-full bg-[#d946a6] px-4 py-2 font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3]"
-                  >
-                    Consulter le PDF
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section
         id="carte-digitale"
-        title="Carte digitale (aperçu)"
-        eyebrow="Idéale pour une consultation sur mobile"
+        title="Carte digitale"
+        eyebrow="Découvrez l'ensemble de notre offre"
         background="subtle"
-        cta={
-          mainPdf?.pdfUrl
-            ? {
-                label: "Télécharger le PDF",
-                href: mainPdf.pdfUrl,
-              }
-            : undefined
-        }
       >
         {highlightItems.length > 0 && (
           <div className="mb-6 rounded-2xl border border-[#d4c5b0] bg-[#f5ede3] p-4 text-xs text-[#6b5d4f]">
@@ -135,10 +77,9 @@ export default function MenuPage() {
           ))}
         </div>
         <p className="mt-5 text-[11px] text-[#6b5d4f]">
-          Cette carte digitale présente une sélection de catégories et de plats
-          pour une lecture rapide. La carte complète reste disponible en PDF et
-          pourra être mise à jour à votre demande pour refléter précisément vos
-          plats, vos prix et vos formules.
+          Ce menu digital est conçu pour être clair et lisible sur mobile comme
+          sur ordinateur. Il pourra être ajusté à tout moment pour suivre
+          l&apos;évolution de votre carte (nouveaux plats, formules, tarifs).
         </p>
       </Section>
 
