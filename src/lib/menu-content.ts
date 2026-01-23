@@ -116,6 +116,27 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
     ],
   },
   {
+    id: "supplements-plats",
+    name: "Suppléments (plats)",
+    items: [
+      {
+        name: "Miel",
+        description: "Supplément miel pour accompagner vos plats salés ou vos fromages.",
+        price: "1,00 €",
+      },
+      {
+        name: "Cornichons",
+        description: "Supplément cornichons en accompagnement.",
+        price: "1,00 €",
+      },
+      {
+        name: "Beurre individuel Président",
+        description: "Portion de beurre individuel Président.",
+        price: "1,00 €",
+      },
+    ],
+  },
+  {
     id: "burgers-gourmet",
     name: "Just gourmet Burger",
     items: [

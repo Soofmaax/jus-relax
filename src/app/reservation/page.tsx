@@ -22,9 +22,10 @@ export default function ReservationPage() {
           <div className="space-y-4 text-sm text-slate-100/90">
             <p>
               Pour un dîner en tête-à-tête, un anniversaire, un afterwork ou un
-              événement privé, l&apos;équipe de{" "}
+              événement privé, l&apos;équipe de{` `}
               <span className="font-semibold">{justRelaxData.name}</span> vous
-              accueille à Pantin, avec terrasse privée &amp; lounge chicha.
+              accueille à Pantin, avec terrasse privée, lounge chicha et cuisine
+              100 % halal.
             </p>
             <p>
               Réserver en avance est vivement recommandé, en particulier pour

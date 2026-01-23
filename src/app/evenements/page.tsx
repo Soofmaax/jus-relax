@@ -41,10 +41,11 @@ export default function EvenementsPage() {
           <div className="space-y-4 text-sm text-slate-100/90">
             <p>
               Pour vos anniversaires, afterworks, soirées d&apos;entreprise ou
-              événements privés,{" "}
+              événements privés,{` `}
               <span className="font-semibold">{justRelaxData.name}</span> vous
               propose un cadre chaleureux à Pantin (93500), avec terrasse
-              privée, espace lounge et service jusqu&apos;à 2h du matin.
+              privée, espace lounge, cuisine 100 % halal et service
+              jusqu&apos;à 2h du matin.
             </p>
             <p>
               Selon la taille de votre groupe et le type d&apos;événement, il est

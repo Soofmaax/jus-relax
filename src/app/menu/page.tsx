@@ -30,6 +30,9 @@ export default function MenuPage() {
           complet, tandis que la carte digitale ci-dessous offre une lecture
           confortable sur mobile.
         </p>
+        <p className="mt-3 max-w-2xl text-xs font-medium text-amber-200">
+          Tous nos plats sont préparés avec une cuisine 100 % halal.
+        </p>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           {justRelaxData.menus.map((menu) => (
             <div

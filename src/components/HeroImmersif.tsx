@@ -87,14 +87,14 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
             </span>
           </h1>
           <p className="max-w-xl text-pretty text-sm text-slate-200/90 sm:text-base">
-            Cuisine généreuse, cocktails signatures, terrasse privée &amp; lounge chicha
+            Cuisine généreuse 100 % halal, cocktails signatures, terrasse privée &amp; lounge chicha
             au cœur de Pantin (93500). Une adresse intimiste pour prolonger vos
             soirées dans l&apos;Est parisien.
           </p>
 
           <div className="flex flex-wrap gap-2 text-[11px] text-slate-100/90">
             <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 ring-1 ring-white/15">
-              🧑🏻‍🍳 Cuisine &amp; cocktails
+              🧑🏻‍🍳 Cuisine 100 % halal &amp; cocktails
             </span>
             <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 ring-1 ring-white/15">
               💨 Terrasse privée &amp; lounge

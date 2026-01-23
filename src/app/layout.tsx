@@ -117,6 +117,7 @@ export default function RootLayout({
     priceRange: "€€",
     servesCuisine: [
       "Cuisine variée",
+      "Cuisine halal",
       "Burgers",
       "Tapas",
     ],
