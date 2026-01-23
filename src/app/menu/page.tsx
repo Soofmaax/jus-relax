@@ -23,6 +23,56 @@ export default function MenuPage() {
     items: category.items.filter((item) => !item.isHighlight),
   }));
 
+  const cuisineCategoryIds = [
+    "just-kids",
+    "planches",
+    "entrees",
+    "salades",
+    "supplements-plats",
+    "burgers-gourmet",
+    "just-express",
+    "pizzas",
+    "paninis-crepes",
+    "casse-croutes",
+    "pates",
+    "viandes",
+    "desserts",
+  ];
+
+  const drinksCategoryIds = [
+    "cocktails-sans-alcool",
+    "cocktails-classiques",
+    "cocktails-signature",
+    "boissons-soft",
+    "just-bubble",
+    "vins-rouges",
+    "vins-blancs",
+    "vins-roses",
+    "champagnes",
+    "boissons-chaudes",
+    "supplements-boissons",
+    "eaux-minerales",
+    "bieres-bouteilles",
+    "aperitifs",
+    "gin-4cl",
+    "vodka-4cl",
+    "rhum-4cl",
+    "whisky-4cl",
+    "digestifs-4cl",
+  ];
+
+  const chichaCategoryIds = ["just-chicha", "formules-chicha"];
+
+  const cuisineCategories = nonHighlightCategories.filter((category) =>
+    cuisineCategoryIds.includes(category.id)
+  );
+  const drinksCategories = nonHighlightCategories.filter((category) =>
+    drinksCategoryIds.includes(category.id)
+  );
+  const chichaCategories = nonHighlightCategories.filter((category) =>
+    chichaCategoryIds.includes(category.id)
+  );
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section
@@ -46,36 +96,118 @@ export default function MenuPage() {
             </ul>
           </div>
         )}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {nonHighlightCategories.map((category) => (
-            <section
-              key={category.id}
-              id={category.id}
-              className="space-y-4"
-              aria-label={category.name}
-            >
+
+        {cuisineCategories.length > 0 && (
+          <div className="space-y-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
               <div>
-                <h3 className="text-sm font-semibold text-[#2d2416]">
-                  {category.name}
-                </h3>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+                  Cuisine &amp; plats
+                </p>
+                <h2 className="text-base font-semibold text-[#2d2416]">
+                  Burgers, pâtes, pizzas &amp; spécialités maison
+                </h2>
               </div>
-              <div className="space-y-3">
-                {category.items.slice(0, 3).map((item) => (
-                  <MenuItemCard
-                    key={`${category.id}-${item.name}`}
-                    item={item}
-                  />
-                ))}
-                {category.items.length > 3 && (
-                  <p className="text-[11px] text-[#6b5d4f]">
-                    ...et d&apos;autres suggestions dans cette catégorie sont
-                    visibles sur la carte complète.
-                  </p>
-                )}
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {cuisineCategories.map((category) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="space-y-3"
+                  aria-label={category.name}
+                >
+                  <h3 className="text-sm font-semibold text-[#2d2416]">
+                    {category.name}
+                  </h3>
+                  <div className="space-y-3">
+                    {category.items.slice(0, 3).map((item) => (
+                      <MenuItemCard
+                        key={`${category.id}-${item.name}`}
+                        item={item}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {drinksCategories.length > 0 && (
+          <div className="mt-8 space-y-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+                  Boissons &amp; cocktails
+                </p>
+                <h2 className="text-base font-semibold text-[#2d2416]">
+                  Cocktails signatures, softs &amp; boissons chaudes
+                </h2>
               </div>
-            </section>
-          ))}
-        </div>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {drinksCategories.map((category) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="space-y-3"
+                  aria-label={category.name}
+                >
+                  <h3 className="text-sm font-semibold text-[#2d2416]">
+                    {category.name}
+                  </h3>
+                  <div className="space-y-3">
+                    {category.items.slice(0, 3).map((item) => (
+                      <MenuItemCard
+                        key={`${category.id}-${item.name}`}
+                        item={item}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {chichaCategories.length > 0 && (
+          <div className="mt-8 space-y-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+                  Chicha &amp; lounge
+                </p>
+                <h2 className="text-base font-semibold text-[#2d2416]">
+                  Carte chicha &amp; formules lounge
+                </h2>
+              </div>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {chichaCategories.map((category) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="space-y-3"
+                  aria-label={category.name}
+                >
+                  <h3 className="text-sm font-semibold text-[#2d2416]">
+                    {category.name}
+                  </h3>
+                  <div className="space-y-3">
+                    {category.items.slice(0, 3).map((item) => (
+                      <MenuItemCard
+                        key={`${category.id}-${item.name}`}
+                        item={item}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
         <p className="mt-5 text-[11px] text-[#6b5d4f]">
           Ce menu digital est conçu pour être clair et lisible sur mobile comme
           sur ordinateur. Il pourra être ajusté à tout moment pour suivre
