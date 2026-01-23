@@ -42,7 +42,7 @@ export default function AccesHorairesPage() {
             <p>
               Situé au cœur de Pantin, à proximité des grands axes et des
               transports, {justRelaxData.name} est facilement accessible pour
-              vos déjeuners, dîners et soirées.
+              vos déjeuners, afterworks et soirées prolongées.
             </p>
             <OpeningHours ranges={justRelaxData.openingHours} />
             <div className="pt-2">

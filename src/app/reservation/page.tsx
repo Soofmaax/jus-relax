@@ -79,7 +79,7 @@ export default function ReservationPage() {
               100 % halal.
             </p>
             <p>
-              Réserver en avance est vivement recommandé, en particulier pour
+              La réservation est vivement recommandée, en particulier pour
               les soirées de week-end et les groupes.
             </p>
             <CTAButtons data={justRelaxData} layout="stacked" />

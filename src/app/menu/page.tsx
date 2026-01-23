@@ -128,7 +128,7 @@ export default function MenuPage() {
       <Section
         id="carte-digitale"
         title="Carte digitale"
-        eyebrow="Découvrez l'ensemble de notre offre"
+        eyebrow="Un aperçu clair de notre univers"
         background="subtle"
       >
         {highlightItems.length > 0 && (
@@ -281,8 +281,8 @@ export default function MenuPage() {
 
         <p className="mt-5 text-[11px] text-[#6b5d4f]">
           Ce menu digital est pensé pour être lisible d&apos;un coup d&apos;œil, sur mobile
-          comme sur ordinateur. Pour explorer l&apos;ensemble des plats, boissons
-          et chichas, utilisez la carte immersive en haut à droite.
+          comme sur ordinateur. Pour parcourir l&apos;ensemble des plats, boissons
+          et chichas, ouvrez la carte immersive en haut à droite.
         </p>
       </Section>
 

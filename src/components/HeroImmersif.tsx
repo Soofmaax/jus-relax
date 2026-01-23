@@ -89,8 +89,8 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
           </h1>
           <p className="max-w-xl text-pretty text-sm text-[#6b5d4f] sm:text-base">
             Cuisine généreuse 100 % halal, cocktails signatures, terrasse privée &amp; lounge chicha
-            au cœur de Pantin (93500). Une adresse intimiste pour prolonger vos
-            soirées dans l&apos;Est parisien.
+            au cœur de Pantin (93500). Un spot intimiste pour vos dîners, afterworks
+            et soirées prolongées dans l&apos;Est parisien.
           </p>
 
           <div className="flex flex-wrap gap-2 text-[11px] text-[#6b5d4f]">

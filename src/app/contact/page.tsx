@@ -65,7 +65,8 @@ export default function ContactPage() {
                 Une question, une réservation, un événement privé à organiser ?
                 Contactez{" "}
                 <span className="font-semibold">{justRelaxData.name}</span> par
-                téléphone, e-mail ou via le formulaire ci-dessous.
+                téléphone, e-mail ou via le formulaire ci-dessous : nous vous
+                répondons rapidement.
               </p>
               {justRelaxData.contact.phoneMain && (
                 <a
