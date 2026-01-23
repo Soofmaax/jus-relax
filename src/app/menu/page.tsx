@@ -25,41 +25,15 @@ export default function MenuPage() {
   }));
 
   const cuisineCategoryIds = [
-    "just-kids",
-    "planches",
-    "entrees",
-    "salades",
-    "supplements-plats",
     "burgers-gourmet",
-    "just-express",
     "pizzas",
-    "paninis-crepes",
-    "casse-croutes",
-    "pates",
-    "viandes",
     "desserts",
   ];
 
   const drinksCategoryIds = [
-    "cocktails-sans-alcool",
-    "cocktails-classiques",
     "cocktails-signature",
+    "cocktails-sans-alcool",
     "boissons-soft",
-    "just-bubble",
-    "vins-rouges",
-    "vins-blancs",
-    "vins-roses",
-    "champagnes",
-    "boissons-chaudes",
-    "supplements-boissons",
-    "eaux-minerales",
-    "bieres-bouteilles",
-    "aperitifs",
-    "gin-4cl",
-    "vodka-4cl",
-    "rhum-4cl",
-    "whisky-4cl",
-    "digestifs-4cl",
   ];
 
   const chichaCategoryIds = ["just-chicha", "formules-chicha"];
@@ -123,13 +97,13 @@ export default function MenuPage() {
                     {category.name}
                   </h3>
                   <div className="space-y-3">
-                    {category.items.slice(0, 3).map((item) => (
+                    {category.items.slice(0, 2).map((item) => (
                       <MenuItemCard
                         key={`${category.id}-${item.name}`}
                         item={item}
                       />
                     ))}
-                    {category.items.length > 3 && (
+                    {category.items.length > 2 && (
                       <p className="text-[11px] text-[#6b5d4f]">
                         ...et d&apos;autres suggestions dans cette catégorie sont
                         disponibles au restaurant et pourront être ajoutées au
@@ -167,13 +141,13 @@ export default function MenuPage() {
                     {category.name}
                   </h3>
                   <div className="space-y-3">
-                    {category.items.slice(0, 3).map((item) => (
+                    {category.items.slice(0, 2).map((item) => (
                       <MenuItemCard
                         key={`${category.id}-${item.name}`}
                         item={item}
                       />
                     ))}
-                    {category.items.length > 3 && (
+                    {category.items.length > 2 && (
                       <p className="text-[11px] text-[#6b5d4f]">
                         ...et d&apos;autres suggestions dans cette catégorie sont
                         disponibles au restaurant et pourront être ajoutées au
@@ -211,13 +185,13 @@ export default function MenuPage() {
                     {category.name}
                   </h3>
                   <div className="space-y-3">
-                    {category.items.slice(0, 3).map((item) => (
+                    {category.items.slice(0, 2).map((item) => (
                       <MenuItemCard
                         key={`${category.id}-${item.name}`}
                         item={item}
                       />
                     ))}
-                    {category.items.length > 3 && (
+                    {category.items.length > 2 && (
                       <p className="text-[11px] text-[#6b5d4f]">
                         ...et d&apos;autres suggestions dans cette catégorie sont
                         disponibles au restaurant et pourront être ajoutées au
@@ -232,9 +206,9 @@ export default function MenuPage() {
         )}
 
         <p className="mt-5 text-[11px] text-[#6b5d4f]">
-          Ce menu digital est conçu pour être clair et lisible sur mobile comme
-          sur ordinateur. Il pourra être ajusté à tout moment pour suivre
-          l&apos;évolution de votre carte (nouveaux plats, formules, tarifs).
+          Ce menu digital est pensé pour être lisible d&apos;un coup d&apos;œil, sur mobile
+          comme sur ordinateur. Pour explorer l&apos;ensemble des plats, boissons
+          et chichas, utilisez la carte immersive en haut à droite.
         </p>
       </Section>
 
