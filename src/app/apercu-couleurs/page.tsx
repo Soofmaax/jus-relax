@@ -3,42 +3,41 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Aperçu des couleurs",
   description:
-    "Palette de couleurs actuelle du site Just Relax (thème rose fleur de cerisier).",
+    "Palette de couleurs proposée pour Just Relax – Option 1 : Terrasse Méditerranéenne.",
 };
 
 const PALETTE = [
   {
-    group: "Fond principal (background)",
+    group: "🎨 Fonds & Bases",
     colors: [
-      { name: "Rose très clair 1", hex: "#fff7fb" },
-      { name: "Rose très clair 2", hex: "#fdf2f8" },
-      { name: "Rose poudré", hex: "#f9e0e6" },
+      { name: "Fond principal (crème)", hex: "#faf8f3" },
+      { name: "Fond secondaire (beige sable)", hex: "#f5ede3" },
+      { name: "Beige plus chaud", hex: "#eae1d5" },
     ],
   },
   {
-    group: "Accents rose (pétales & bordures)",
+    group: "🌿 Naturel & Bois",
     colors: [
-      { name: "Rose pétale clair", hex: "#f9a8d4" },
-      { name: "Rose bordure clair", hex: "#f9c5d5" },
-      { name: "Rose très clair badge", hex: "#fce7f3" },
+      { name: "Bois grisé clair", hex: "#a39689" },
+      { name: "Vert sauge", hex: "#7c9473" },
+      { name: "Vert nature", hex: "#5a7a52" },
+      { name: "Vert très clair", hex: "#e8f0e6" },
     ],
   },
   {
-    group: "Roses plus intenses (CTA, texte)",
-
+    group: "🌸 Accents Fleuris",
     colors: [
-      { name: "Rose vif CTA", hex: "#ec4899" },
-      { name: "Rose hover CTA", hex: "#f472b6" },
-      { name: "Rose très clair halo", hex: "#fbcfe8" },
+      { name: "Fuchsia vif (CTA)", hex: "#d946a6" },
+      { name: "Rose fuchsia (hover)", hex: "#f472b6" },
+      { name: "Rose très clair", hex: "#fce7f3" },
     ],
   },
   {
-    group: "Prunes / Bordeaux (texte & fonds foncés)",
+    group: "📝 Textes & Bordures",
     colors: [
-      { name: "Prune sombre (fond footer / carte photo)", hex: "#2a1020" },
-      { name: "Prune médium (texte accent)", hex: "#4b1632" },
-      { name: "Prune rosé (titre / accents)", hex: "#9d174d" },
-      { name: "Prune doux (petit texte)", hex: "#7e5a6b" },
+      { name: "Marron foncé (titres)", hex: "#2d2416" },
+      { name: "Marron moyen (texte)", hex: "#6b5d4f" },
+      { name: "Beige bordures", hex: "#d4c5b0" },
     ],
   },
 ];
@@ -62,16 +61,16 @@ export default function ApercuCouleursPage() {
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-10">
       <header className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#ec4899]">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
           Just Relax – Aperçu couleurs
         </p>
-        <h1 className="text-xl font-semibold tracking-tight text-[#2a1020] sm:text-2xl">
-          Palette actuelle (thème rose fleur de cerisier)
+        <h1 className="text-xl font-semibold tracking-tight text-[#2d2416] sm:text-2xl">
+          Palette Option 1 : Terrasse Méditerranéenne
         </h1>
-        <p className="max-w-2xl text-xs text-[#4b1632] sm:text-sm">
-          Cette page n&apos;est qu&apos;une démo interne pour visualiser les
-          couleurs utilisées sur le site (fonds, boutons, textes, badges). Elle
-          ne sera pas liée dans le menu public.
+        <p className="max-w-2xl text-xs text-[#6b5d4f] sm:text-sm">
+          Cette page interne montre visuellement l&apos;option 1 que tu as
+          proposée : une base crème / beige, des touches de vert sauge et des
+          accents fuchsia pour les boutons et les fleurs.
         </p>
       </header>
 
@@ -79,9 +78,9 @@ export default function ApercuCouleursPage() {
         {PALETTE.map((group) => (
           <div
             key={group.group}
-            className="rounded-3xl border border-[#f9c5d5] bg-white/80 p-4 shadow-sm shadow-black/5"
+            className="rounded-3xl border border-[#d4c5b0] bg-white/80 p-4 shadow-sm shadow-black/5"
           >
-            <h2 className="text-sm font-semibold text-[#2a1020]">
+            <h2 className="text-sm font-semibold text-[#2d2416]">
               {group.group}
             </h2>
             <div className="mt-3 flex flex-col gap-2">
@@ -93,26 +92,29 @@ export default function ApercuCouleursPage() {
         ))}
       </section>
 
-      <section className="mt-4 space-y-3 rounded-3xl border border-[#f9c5d5] bg-white/90 p-4 text-xs text-[#4b1632] sm:text-sm">
-        <h2 className="text-sm font-semibold text-[#2a1020]">
-          Exemple d&apos;utilisation des tons de rose
+      <section className="mt-4 space-y-3 rounded-3xl border border-[#d4c5b0] bg-white/90 p-4 text-xs text-[#6b5d4f] sm:text-sm">
+        <h2 className="text-sm font-semibold text-[#2d2416]">
+          Idée d&apos;utilisation sur le site
         </h2>
         <p>
-          • Le fond général de la page utilise les roses très clairs
-          (#fff7fb / #fdf2f8 / #f9e0e6).
+          • Fonds de page et de sections : utiliser les crèmes / beiges
+          (#faf8f3, #f5ede3, #eae1d5) pour rappeler une terrasse ensoleillée.
         </p>
         <p>
-          • Les boutons principaux (Réserver, Entrer) utilisent le rose vif
-          #ec4899, avec un hover plus doux #f472b6.
+          • Boutons principaux (Réserver, Entrer) : utiliser le fuchsia vif
+          #d946a6, avec un hover plus doux #f472b6.
         </p>
         <p>
-          • Les bordures, badges et cartes utilisent les roses plus clairs
-          #f9c5d5 et #fce7f3.
+          • Bordures, séparateurs et cartes : utiliser le beige #d4c5b0 pour
+          structurer sans alourdir.
         </p>
         <p>
-          • Le texte et les zones foncées (footer, carte photo du hero) utilisent
-          les prunes / bordeaux #2a1020, #4b1632 et #9d174d pour garder du
-          contraste.
+          • Touches de vert sauge (#7c9473, #5a7a52, #e8f0e6) pour les détails
+          liés à la terrasse, aux plantes ou aux icônes de services.
+        </p>
+        <p>
+          • Titres et textes : marron foncé #2d2416 pour les titres, marron
+          moyen #6b5d4f pour les paragraphes.
         </p>
       </section>
     </div>
