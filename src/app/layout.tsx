@@ -148,19 +148,19 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#faf5ef] text-[#322]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#fff7fb] text-[#2a1020]`}
       >
         <script
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#faf5ef] via-[#fdf8f4] to-[#f3e2d4]">
+        <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#fff7fb] via-[#fdf2f8] to-[#f9e0e6]">
           <StickyHeader />
           <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
             {children}
           </main>
-          <footer className="border-t border-[#e1d5cc] bg-[#383131]">
+          <footer className="border-t border-[#f9c5d5] bg-[#2a1020]">
             <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
               <div>
                 <p className="text-sm font-semibold text-slate-100">
