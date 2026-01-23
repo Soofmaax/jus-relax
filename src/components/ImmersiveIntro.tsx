@@ -85,7 +85,7 @@ export default function ImmersiveIntro({ open, onEnter }: ImmersiveIntroProps) {
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
+              <h1 className="font-display text-balance text-3xl font-semibold text-slate-50 sm:text-4xl">
                 Just Relax
                 <span className="block text-lg font-normal text-amber-200 sm:text-xl">
                   Restaurant &amp; Lounge

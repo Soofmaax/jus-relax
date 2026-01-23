@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { SITE_URL, defaultLocale } from "@/lib/seo";
@@ -15,6 +15,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-just-display",
   subsets: ["latin"],
 });
 
@@ -143,19 +148,19 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-slate-50`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#050308] text-slate-50`}
       >
         <script
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+        <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#050308] via-[#14060b] to-[#050308]">
           <StickyHeader />
           <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
             {children}
           </main>
-          <footer className="border-t border-white/10 bg-black/70">
+          <footer className="border-t border-white/10 bg-[#050308]/90">
             <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
               <div>
                 <p className="text-sm font-semibold text-slate-100">

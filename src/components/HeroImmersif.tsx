@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import type { JustRelaxData } from "@/lib/just-relax-schema";
@@ -80,7 +81,7 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(16,185,129,0.45)]" />
             <span>Pantin · 7j/7 jusqu&apos;à 2h</span>
           </div>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
+          <h1 className="font-display text-balance text-3xl font-semibold text-slate-50 sm:text-4xl md:text-5xl">
             {data.name}
             <span className="block text-lg font-normal text-amber-200 sm:text-xl">
               Restaurant &amp; Lounge
@@ -151,13 +152,28 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
 
         <div className="relative">
           <motion.div
-            className="absolute -inset-10 rounded-[3rem] bg-amber-400/20 blur-3xl"
+            className="absolute -inset-10 rounded-[3rem] bg-amber-400/25 blur-3xl"
             style={shouldReduceMotion ? undefined : { opacity: glowOpacity }}
             aria-hidden="true"
           />
           <div className="relative overflow-hidden rounded-[2.25rem] border border-white/15 bg-black/60 shadow-2xl shadow-black/80">
-            <div className="aspect-[4/3] w-full bg-[radial-gradient(circle_at_top,_rgba(248,250,252,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.98),_transparent_65%)]" />
-            <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 text-xs text-slate-100 sm:p-5">
+            <div className="relative aspect-[4/3] w-full">
+              {data.heroImage && (
+                <Image
+                  src={data.heroImage}
+                  alt={
+                    (data.seo && "title" in data.seo && (data.seo as any).title) ||
+                    `${data.name} – Restaurant & Lounge à Pantin`
+                  }
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+                />
+              )}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+            </div>
+            <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-4 text-xs text-slate-100 sm:p-5">
               <p className="text-[11px] uppercase tracking-[0.18em] text-amber-200">
                 Just Relax · Pantin
               </p>
