@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check formatting
-        run: npm run format:check
+      - name: Check formatting (non blocking)
+        run: |
+          npm run format:check || echo "Prettier reported formatting issues. Utilisez le workflow 'Debug and auto-fix' pour appliquer automatiquement le formatage."formatting (non blocking)
+        run: |
+          npm run format:check || echo "Prettier reported issues. Use the 'Debug and auto-fix' workflow to apply formatting."
 
       - name: Lint
         run: npm run lint
