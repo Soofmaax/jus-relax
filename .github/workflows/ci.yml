@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  build-and-fix:
+    name: Auto-fix, lint, type-check & build
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm test
+
+      - name: Lint (auto-fix on push)
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            npm run lint -- --fix || npm run lint
+          else
+            npm run lint
+          fi
+
+      - name: Format with Prettier (on push)
+        if: github.event_name == 'push'
+        run: npm run format
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build
+        run: npm run build

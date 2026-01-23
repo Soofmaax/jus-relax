@@ -18,15 +18,17 @@ export function getReservationInfo(
     ? `tel:${contact.phoneMain.replace(/\s+/g, "")}`
     : "#";
 
-  const hasWhatsapp = !!contact.whatsapp && contact.whatsapp.trim().length > 0;
-  const hasBookingUrl =
-    !!contact.bookingUrl && contact.bookingUrl.trim().length > 0;
+  const whatsappRaw = contact.whatsapp ?? "";
+  const bookingRaw = contact.bookingUrl ?? "";
+
+  const hasWhatsapp = whatsappRaw.trim().length > 0;
+  const hasBookingUrl = bookingRaw.trim().length > 0;
 
   const whatsappHref = hasWhatsapp
-    ? `https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`
+    ? `https://wa.me/${whatsappRaw.replace(/\D/g, "")}`
     : undefined;
 
-  const bookingHref = hasBookingUrl ? contact.bookingUrl : undefined;
+  const bookingHref = hasBookingUrl ? bookingRaw : undefined;
 
   if (hasWhatsapp && whatsappHref) {
     return {

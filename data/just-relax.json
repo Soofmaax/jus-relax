@@ -1,7 +1,7 @@
 {
   "name": "Just Relax",
   "tagline": "Restaurant & Lounge",
-  "description": "Restaurant & lounge à Pantin avec terrasse privée, chicha, cocktails et ambiance conviviale. Ouvert 7j/7 pour vos déjeuners, dîners et soirées.",
+  "description": "Restaurant & lounge halal à Pantin avec terrasse privée, chicha, cocktails et ambiance conviviale. Cuisine 100 % halal, ouvert 7j/7 pour vos déjeuners, dîners et soirées.",
   "heroImage": "https://cdn.website.dish.co/media/a7/73/6833522/3a4a171e-ba2f-4547-bfb9-5ab65a55c8d2-JPG.jpg",
   "contact": {
     "phoneMain": "+33148918366",
@@ -209,8 +209,8 @@
     "country": "France"
   },
   "seo": {
-    "title": "Just Relax – Restaurant & Lounge à Pantin",
-    "description": "Restaurant & lounge à Pantin avec terrasse privée, chicha, cocktails et ambiance conviviale. Ouvert 7j/7 pour vos déjeuners, dîners et soirées.",
+    "title": "Just Relax – Restaurant & Lounge halal à Pantin",
+    "description": "Restaurant & lounge halal à Pantin avec terrasse privée, chicha, cocktails et ambiance conviviale. Cuisine 100 % halal, ouvert 7j/7 pour vos déjeuners, dîners et soirées.",
     "keywords": [
       "Just Relax",
       "restaurant Pantin",
@@ -219,7 +219,10 @@
       "terrasse privée",
       "cocktails",
       "restaurant 93500",
-      "restaurant général Leclerc Pantin"
+      "restaurant général Leclerc Pantin",
+      "restaurant halal Pantin",
+      "cuisine halal Pantin",
+      "restaurant halal 93500"
     ]
   }
 }

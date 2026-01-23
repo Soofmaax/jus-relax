@@ -58,6 +58,11 @@ export interface MenuItem {
   description?: string;
   price?: string;
   isPlaceholder?: boolean;
+  /**
+   * Permet de mettre en avant certains éléments (infos, avertissements, etc.)
+   * dans la carte digitale.
+   */
+  isHighlight?: boolean;
 }
 
 export interface MenuCategory {

@@ -89,10 +89,10 @@ export default function MentionsLegalesPage() {
                 Hébergement
               </h2>
               <p className="text-slate-300">
-                Ce site est actuellement mis en ligne en environnement de
-                pré-production afin de présenter le projet au client. L&apos;hébergeur
-                définitif (par exemple&nbsp;: Vercel, OVH, Scaleway…) sera choisi et
-                validé avec le client lors de la mise en production.
+                Ce site est hébergé par un prestataire d&apos;infrastructure web
+                professionnel. Les informations complètes relatives à l&apos;hébergeur
+                (raison sociale, adresse, coordonnées) peuvent être communiquées
+                sur simple demande auprès du propriétaire du restaurant.
               </p>
             </div>
           </div>

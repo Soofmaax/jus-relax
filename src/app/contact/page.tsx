@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import SocialLinks from "@/components/SocialLinks";
+import MapEmbed from "@/components/MapEmbed";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { pageSeo } from "@/lib/page-seo";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = pageSeo.contact;
 
@@ -16,6 +18,12 @@ export default function ContactPage() {
     ? `mailto:${justRelaxData.contact.email}`
     : "#";
 
+  const mapUrl = justRelaxData.contact.address.mapUrl;
+
+  const hasSocial = Object.values(justRelaxData.social).some(
+    (value) => value && value.trim().length > 0
+  );
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section title="Contact" eyebrow="Nous écrire ou réserver">
@@ -26,7 +34,7 @@ export default function ContactPage() {
                 Une question, une réservation, un événement privé à organiser ?
                 Contactez{" "}
                 <span className="font-semibold">{justRelaxData.name}</span> par
-                téléphone, e-mail ou via le formulaire ci-contre.
+                téléphone, e-mail ou via le formulaire ci-dessous.
               </p>
               {justRelaxData.contact.phoneMain && (
                 <a
@@ -64,85 +72,33 @@ export default function ContactPage() {
               )}
             </div>
             <CTAButtons data={justRelaxData} layout="inline" />
-            <div className="pt-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
-                Nous suivre
+            {hasSocial && (
+              <div className="pt-2">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+                  Nous suivre
+                </h2>
+                <SocialLinks social={justRelaxData.social} />
+              </div>
+            )}
+          </div>
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40 sm:p-6">
+              <h2 className="text-sm font-semibold text-slate-50">
+                Formulaire de contact
               </h2>
               <p className="mt-1 text-[11px] text-slate-400">
-                Les badges ci-dessous illustrent l&apos;emplacement de vos futurs
-                liens Instagram, Facebook ou TikTok. Ils seront reliés à vos
-                comptes officiels dès que les URLs seront renseignées.
+                Merci de renseigner vos coordonnées et l&apos;objet de votre demande.
+                Nous reviendrons vers vous dans les meilleurs délais pour confirmer
+                votre réservation ou vous apporter une réponse personnalisée.
               </p>
-              <SocialLinks social={justRelaxData.social} demo />
+              <ContactForm />
             </div>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40 sm:p-6">
-            <h2 className="text-sm font-semibold text-slate-50">
-              Formulaire de contact
-            </h2>
-            <p className="mt-1 text-[11px] text-slate-400">
-              Merci de renseigner vos coordonnées et l&apos;objet de votre demande.
-              Nous reviendrons vers vous dans les meilleurs délais pour confirmer
-              votre réservation ou vous apporter une réponse personnalisée.
-            </p>
-            <form className="mt-4 space-y-3 text-sm">
-              <div>
-                <label className="block text-xs font-medium text-slate-200">
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-sm text-slate-50 outline-none ring-amber-300/0 transition focus:border-amber-300/80 focus:ring-2"
-                  placeholder="Votre nom"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-200">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  className="mt-1 w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-sm text-slate-50 outline-none ring-amber-300/0 transition focus:border-amber-300/80 focus:ring-2"
-                  placeholder="votre@email.com"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-200">
-                  Téléphone
-                </label>
-                <input
-                  type="tel"
-                  className="mt-1 w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-sm text-slate-50 outline-none ring-amber-300/0 transition focus:border-amber-300/80 focus:ring-2"
-                  placeholder="Votre numéro"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-200">
-                  Objet
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-sm text-slate-50 outline-none ring-amber-300/0 transition focus:border-amber-300/80 focus:ring-2"
-                  placeholder="Réservation, événement, autre..."
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-200">
-                  Message
-                </label>
-                <textarea
-                  rows={4}
-                  className="mt-1 w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-sm text-slate-50 outline-none ring-amber-300/0 transition focus:border-amber-300/80 focus:ring-2"
-                  placeholder="Votre message..."
-                />
-              </div>
-              <button
-                type="button"
-                className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
-              >
-                Envoyer
-              </button>
-            </form>
+            {mapUrl && (
+              <MapEmbed
+                mapUrl={mapUrl}
+                title={`Plan d'accès à ${justRelaxData.name}`}
+              />
+            )}
           </div>
         </div>
       </Section>

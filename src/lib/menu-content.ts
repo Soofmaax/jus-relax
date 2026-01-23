@@ -2,6 +2,8 @@ export interface DigitalMenuItem {
   name: string;
   description: string;
   price: string;
+  /** Met en avant certains éléments dans la carte digitale (infos, avertissements, etc.). */
+  isHighlight?: boolean;
 }
 
 export interface DigitalMenuCategory {
@@ -110,6 +112,27 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
         description:
           "Salade, tomates cerises, œuf dur, croûtons, saumon fumé.",
         price: "14,90 €",
+      },
+    ],
+  },
+  {
+    id: "supplements-plats",
+    name: "Suppléments (plats)",
+    items: [
+      {
+        name: "Miel",
+        description: "Supplément miel pour accompagner vos plats salés ou vos fromages.",
+        price: "1,00 €",
+      },
+      {
+        name: "Cornichons",
+        description: "Supplément cornichons en accompagnement.",
+        price: "1,00 €",
+      },
+      {
+        name: "Beurre individuel Président",
+        description: "Portion de beurre individuel Président.",
+        price: "1,00 €",
       },
     ],
   },
@@ -735,9 +758,16 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
         price: "15,00 €",
       },
       {
+        name: "Pour les gentlemen accompagnés",
+        description:
+          "La première chicha est au tarif classique, la seconde est au tarif dame.",
+        price: "—",
+        isHighlight: true,
+      },
+      {
         name: "Formule Quasar + dessert (dames)",
         description:
-          "Une chicha Quasar et un dessert \"ptit plaisir\", accompagnés d’une boisson soft (hors Red Bull et cocktail).",
+          "Une chicha Quasar et un dessert \\\"ptit plaisir\\\", accompagnés d’une boisson soft (hors Red Bull et cocktail).",
         price: "20,00 €",
       },
       {
@@ -749,7 +779,7 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
       {
         name: "Formule Quasar complète (dames)",
         description:
-          "Une chicha Quasar, une entrée, un Just plat et un dessert \"ptit plaisir\", avec boisson soft (hors Red Bull et cocktail).",
+          "Une chicha Quasar, une entrée, un Just plat et un dessert \\\"ptit plaisir\\\", avec boisson soft (hors Red Bull et cocktail).",
         price: "45,00 €",
       },
       {
@@ -767,14 +797,613 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
       {
         name: "Formule tête plate complète (messieurs)",
         description:
-          "Une chicha tête plate, une entrée, un Just plat et un dessert \"ptit plaisir\", avec boisson soft (hors Red Bull et cocktail).",
+          "Une chicha tête plate, une entrée, un Just plat et un dessert \\\"ptit plaisir\\\", avec boisson soft (hors Red Bull et cocktail).",
         price: "45,00 €",
       },
       {
         name: "Formule Quasar complète (messieurs)",
         description:
-          "Une chicha Quasar, une entrée, un Just plat et un dessert \"ptit plaisir\", avec boisson soft (hors Red Bull et cocktail).",
+          "Une chicha Quasar, une entrée, un Just plat et un dessert \\\"ptit plaisir\\\", avec boisson soft (hors Red Bull et cocktail).",
         price: "50,00 €",
+      },
+      {
+        name: "Infos lounge & suppléments",
+        description:
+          "Pas de carafe d’eau en accompagnement pour la chicha ou dans la partie lounge. Tout supplément chicha est facturé au tarif habituel.",
+        price: "—",
+        isHighlight: true,
+      },
+    ],
+  },
+  {
+    id: "vins-rouges",
+    name: "Vins rouges",
+    items: [
+      {
+        name: "Côte du Rhône \"Château Saint Roman\"",
+        description: "Verre 12 cl : 5,50 € · Bouteille 75 cl : 27,00 €.",
+        price: "à partir de 5,50 €",
+      },
+      {
+        name: "Brouilly",
+        description: "Verre 12 cl : 6,00 € · Bouteille 75 cl : 30,00 €.",
+        price: "à partir de 6,00 €",
+      },
+      {
+        name: "Chinon \"Les Granges de la Perrière\"",
+        description: "Bouteille 37,5 cl : 19,00 € · 75 cl : 32,00 €.",
+        price: "à partir de 19,00 €",
+      },
+      {
+        name: "Saint-Émilion Grand Cru \"Barrail La Rose\"",
+        description: "Bouteille 75 cl.",
+        price: "37,00 €",
+      },
+      {
+        name: "Bourgogne Pinot Noir",
+        description: "Bouteille 75 cl.",
+        price: "37,00 €",
+      },
+      {
+        name: "Bordeaux \"Mouton Cadet\"",
+        description: "Bouteille 75 cl.",
+        price: "40,00 €",
+      },
+    ],
+  },
+  {
+    id: "vins-blancs",
+    name: "Vins blancs",
+    items: [
+      {
+        name: "Côtes de Gascogne \"Les Hirondelles\" (moelleux ou sec)",
+        description: "Verre 12 cl : 4,00 € · Bouteille 75 cl : 18,00 €.",
+        price: "à partir de 4,00 €",
+      },
+      {
+        name: "Chardonnay",
+        description: "Verre 12 cl : 5,00 € · Bouteille 75 cl : 24,00 €.",
+        price: "à partir de 5,00 €",
+      },
+      {
+        name: "Monbazillac \"Bajac\"",
+        description: "Bouteille 75 cl.",
+        price: "26,00 €",
+      },
+      {
+        name: "Sauvignon bio \"Sapristi\"",
+        description: "Bouteille 75 cl.",
+        price: "27,00 €",
+      },
+      {
+        name: "Bordeaux Sauvignon \"Mouton Cadet\"",
+        description: "Bouteille 75 cl.",
+        price: "35,00 €",
+      },
+      {
+        name: "Chablis \"Les Beaumonts\" – Domaine Dampt-Frères",
+        description: "Bouteille 37,5 cl : 25,00 € · 75 cl : 40,00 €.",
+        price: "à partir de 25,00 €",
+      },
+    ],
+  },
+  {
+    id: "vins-roses",
+    name: "Vins rosés",
+    items: [
+      {
+        name: "Côtes de Provence Bio \"La Santonnière\"",
+        description: "Verre 12 cl : 6,00 € · 37,5 cl : 17,00 € · 75 cl : 30,00 €.",
+        price: "à partir de 6,00 €",
+      },
+      {
+        name: "Bordeaux \"Mouton Cadet\"",
+        description: "Bouteille 75 cl.",
+        price: "35,00 €",
+      },
+      {
+        name: "Côtes de Provence \"Minuty\"",
+        description: "Bouteille 75 cl.",
+        price: "40,00 €",
+      },
+    ],
+  },
+  {
+    id: "champagnes",
+    name: "Champagnes",
+    items: [
+      {
+        name: "Veuve Pelletier",
+        description: "Bouteille 75 cl.",
+        price: "80,00 €",
+      },
+      {
+        name: "GH Mumm",
+        description: "Bouteille 75 cl.",
+        price: "120,00 €",
+      },
+      {
+        name: "Moët & Chandon",
+        description: "Bouteille 75 cl.",
+        price: "150,00 €",
+      },
+      {
+        name: "Ruinart Blanc de Blancs",
+        description: "Bouteille 75 cl.",
+        price: "350,00 €",
+      },
+    ],
+  },
+  {
+    id: "boissons-chaudes",
+    name: "Boissons chaudes",
+    items: [
+      {
+        name: "Café",
+        description: "Expresso court.",
+        price: "2,00 €",
+      },
+      {
+        name: "Noisette",
+        description: "Expresso avec une touche de lait.",
+        price: "2,50 €",
+      },
+      {
+        name: "Allongé",
+        description: "Café allongé.",
+        price: "2,50 €",
+      },
+      {
+        name: "Décaféiné",
+        description: "Café décaféiné.",
+        price: "2,50 €",
+      },
+      {
+        name: "Café crème",
+        description: "Café avec crème.",
+        price: "3,00 €",
+      },
+      {
+        name: "Thé / infusion",
+        description: "Assortiment de thés et infusions.",
+        price: "3,00 €",
+      },
+      {
+        name: "Double expresso",
+        description: "Double shot d’expresso.",
+        price: "3,50 €",
+      },
+      {
+        name: "Chocolat chaud",
+        description: "Chocolat chaud classique.",
+        price: "3,50 €",
+      },
+      {
+        name: "Chocolat liégeois",
+        description: "Chocolat chaud gourmand avec chantilly.",
+        price: "4,00 €",
+      },
+      {
+        name: "Cappuccino",
+        description: "Café, lait chaud et mousse.",
+        price: "4,00 €",
+      },
+      {
+        name: "Thé marocain",
+        description:
+          "Servi dans une théière individuelle, chaque verre supplémentaire est facturé 1,00 €.",
+        price: "4,50 €",
+      },
+    ],
+  },
+  {
+    id: "boissons-soft",
+    name: "Boissons soft",
+    items: [
+      {
+        name: "Coca-Cola / Zero / Cherry",
+        description: "Sodas 33 cl.",
+        price: "4,00 €",
+      },
+      {
+        name: "Sprite",
+        description: "Soda 33 cl.",
+        price: "4,00 €",
+      },
+      {
+        name: "Orangina",
+        description: "Boisson gazeuse 33 cl.",
+        price: "4,00 €",
+      },
+      {
+        name: "Schweppes Agrumes / Tonic / Lemon",
+        description: "Boissons gazeuses 33 cl.",
+        price: "4,00 €",
+      },
+      {
+        name: "Oasis tropical",
+        description: "Boisson fruitée 33 cl.",
+        price: "4,00 €",
+      },
+      {
+        name: "Limonade",
+        description: "Boisson pétillante 33 cl.",
+        price: "4,00 €",
+      },
+      {
+        name: "Diabolo",
+        description:
+          "Sirop au choix (fraise, grenadine, citron, melon, cerise, menthe, pomme verte) allongé de limonade.",
+        price: "4,00 €",
+      },
+      {
+        name: "Jus de fruits",
+        description:
+          "Orange, poire, ananas, ACE, pomme, litchi, pêche (au verre).",
+        price: "4,00 €",
+      },
+      {
+        name: "Fuze Tea",
+        description: "Boisson glacée.",
+        price: "4,00 €",
+      },
+      {
+        name: "Evian 50 cl",
+        description: "Eau minérale plate en bouteille.",
+        price: "4,00 €",
+      },
+      {
+        name: "Red Bull",
+        description: "Boisson énergisante.",
+        price: "4,00 €",
+      },
+      {
+        name: "Perrier 33 cl",
+        description: "Eau gazeuse en bouteille.",
+        price: "4,00 €",
+      },
+    ],
+  },
+  {
+    id: "supplements-boissons",
+    name: "Suppléments boissons",
+    items: [
+      {
+        name: "Sirop au choix",
+        description: "Supplément sirop (hors Evian 50 cl).",
+        price: "0,50 €",
+      },
+      {
+        name: "Rondelle de citron",
+        description: "Supplément rondelle de citron.",
+        price: "0,50 €",
+      },
+      {
+        name: "Billes bubble",
+        description: "Perles aromatisées pour boissons.",
+        price: "2,00 €",
+      },
+    ],
+  },
+  {
+    id: "eaux-minerales",
+    name: "Eaux minérales",
+    items: [
+      {
+        name: "Vittel 50 cl",
+        description:
+          "Uniquement servies pendant les heures de repas (11h–15h et 19h–23h).",
+        price: "4,00 €",
+      },
+      {
+        name: "Eau pétillante 50 cl",
+        description:
+          "Uniquement servies pendant les heures de repas (11h–15h et 19h–23h).",
+        price: "4,00 €",
+      },
+      {
+        name: "Eau plate 1 L",
+        description:
+          "Uniquement servies pendant les heures de repas (11h–15h et 19h–23h).",
+        price: "5,00 €",
+      },
+      {
+        name: "Eau pétillante 1 L",
+        description:
+          "Uniquement servies pendant les heures de repas (11h–15h et 19h–23h).",
+        price: "5,00 €",
+      },
+    ],
+  },
+  {
+    id: "just-bubble",
+    name: "Just Bubble",
+    items: [
+      {
+        name: "Le Love",
+        description: "Infusé au thé vert au jasmin, fraise et perles de litchi.",
+        price: "6,00 €",
+      },
+      {
+        name: "Le Detox",
+        description: "Infusé au thé vert au jasmin, melon et perles de pomme.",
+        price: "6,00 €",
+      },
+      {
+        name: "Le Summer",
+        description: "Infusé au thé vert au jasmin, ananas et perles de passion.",
+        price: "6,00 €",
+      },
+      {
+        name: "Le Bloodie",
+        description: "Infusé au thé vert au jasmin, fraise et billes de pomme.",
+        price: "6,00 €",
+      },
+    ],
+  },
+  {
+    id: "bieres-bouteilles",
+    name: "Bières bouteilles",
+    items: [
+      {
+        name: "Super Bock / Heineken / Desperados 25 cl",
+        description: "Bières en bouteille.",
+        price: "4,00 €",
+      },
+      {
+        name: "Corona 35 cl",
+        description: "Bière en bouteille.",
+        price: "4,50 €",
+      },
+      {
+        name: "Desperados 35 cl",
+        description: "Bière aromatisée en bouteille.",
+        price: "4,50 €",
+      },
+    ],
+  },
+  {
+    id: "aperitifs",
+    name: "Apéritifs",
+    items: [
+      {
+        name: "Ricard 2 cl",
+        description: "Anisé servi allongé.",
+        price: "4,00 €",
+      },
+      {
+        name: "Malibu",
+        description: "Liqueur de coco.",
+        price: "4,00 €",
+      },
+      {
+        name: "Martini blanc ou rouge 5 cl",
+        description: "Vermouth servi à l’apéritif.",
+        price: "4,50 €",
+      },
+      {
+        name: "Suze 4 cl",
+        description: "Apéritif à base de gentiane.",
+        price: "4,50 €",
+      },
+      {
+        name: "Kir vin blanc 12 cl",
+        description: "Vin blanc et crème de cassis.",
+        price: "5,50 €",
+      },
+      {
+        name: "Porto 10 cl",
+        description: "Vin de Porto servi à l’apéritif.",
+        price: "5,50 €",
+      },
+      {
+        name: "Lillet 6 cl",
+        description: "Apéritif à base de vin.",
+        price: "5,50 €",
+      },
+      {
+        name: "Coupe de champagne",
+        description: "Champagne au verre.",
+        price: "15,00 €",
+      },
+      {
+        name: "Kir royal",
+        description: "Champagne et crème de cassis.",
+        price: "16,00 €",
+      },
+      {
+        name: "Supplément sirop",
+        description: "Supplément sirop pour apéritif.",
+        price: "0,50 €",
+      },
+    ],
+  },
+  {
+    id: "gin-4cl",
+    name: "Gin 4 cl",
+    items: [
+      {
+        name: "Bombay Sapphire",
+        description: "Gin London Dry.",
+        price: "7,00 €",
+      },
+      {
+        name: "Tanqueray London Dry",
+        description: "Gin London Dry.",
+        price: "7,00 €",
+      },
+      {
+        name: "Generous Bio",
+        description: "Gin biologique.",
+        price: "8,00 €",
+      },
+    ],
+  },
+  {
+    id: "vodka-4cl",
+    name: "Vodkas & bouteilles",
+    items: [
+      {
+        name: "Absolut 4 cl",
+        description:
+          "Vodka servie au verre. Les bouteilles sont servies avec une brique de jus et 2 Red Bull.",
+        price: "7,00 €",
+      },
+      {
+        name: "Belvédère 4 cl",
+        description:
+          "Vodka servie au verre. Les bouteilles sont servies avec une brique de jus et 2 Red Bull.",
+        price: "8,00 €",
+      },
+      {
+        name: "Absolut (bouteille)",
+        description:
+          "Vodka en bouteille, servie avec une brique de jus et 2 Red Bull.",
+        price: "90,00 €",
+      },
+      {
+        name: "Belvédère (bouteille)",
+        description:
+          "Vodka en bouteille, servie avec une brique de jus et 2 Red Bull.",
+        price: "120,00 €",
+      },
+    ],
+  },
+  {
+    id: "rhum-4cl",
+    name: "Rhums 4 cl",
+    items: [
+      {
+        name: "Plantation 3 Stars",
+        description: "Rhum blanc.",
+        price: "7,00 €",
+      },
+      {
+        name: "Havana Club 7 ans",
+        description: "Rhum ambré vieilli 7 ans.",
+        price: "8,00 €",
+      },
+    ],
+  },
+  {
+    id: "whisky-4cl",
+    name: "Whiskies & bouteilles",
+    items: [
+      {
+        name: "J&B 4 cl",
+        description:
+          "Blended whisky. Les bouteilles sont servies avec une bouteille de Coca-Cola.",
+        price: "7,00 €",
+      },
+      {
+        name: "Four Roses 4 cl",
+        description:
+          "Bourbon. Les bouteilles sont servies avec une bouteille de Coca-Cola.",
+        price: "8,00 €",
+      },
+      {
+        name: "Jack Daniel’s 4 cl",
+        description:
+          "Bourbon. Les bouteilles sont servies avec une bouteille de Coca-Cola.",
+        price: "8,00 €",
+      },
+      {
+        name: "Jack Daniel’s (bouteille)",
+        description:
+          "Bourbon en bouteille, servie avec une bouteille de Coca-Cola.",
+        price: "100,00 €",
+      },
+      {
+        name: "Aberlour 10 ans 4 cl",
+        description: "Single malt écossais 10 ans d’âge.",
+        price: "10,00 €",
+      },
+      {
+        name: "Cardhu 12 ans 4 cl",
+        description: "Single malt écossais 12 ans d’âge.",
+        price: "11,00 €",
+      },
+      {
+        name: "Red Label 4 cl",
+        description: "Blended scotch whisky.",
+        price: "8,00 €",
+      },
+      {
+        name: "Black Label 4 cl",
+        description: "Blended scotch whisky.",
+        price: "9,00 €",
+      },
+      {
+        name: "Chivas 4 cl",
+        description: "Blended scotch whisky.",
+        price: "9,00 €",
+      },
+      {
+        name: "Chivas (bouteille)",
+        description:
+          "Blended scotch en bouteille, servie avec une bouteille de Coca-Cola.",
+        price: "120,00 €",
+      },
+      {
+        name: "Nikka From The Barrel 4 cl",
+        description: "Whisky japonais.",
+        price: "12,00 €",
+      },
+    ],
+  },
+  {
+    id: "digestifs-4cl",
+    name: "Digestifs 4 cl",
+    items: [
+      {
+        name: "Bailey’s",
+        description: "Liqueur à base de crème.",
+        price: "4,00 €",
+      },
+      {
+        name: "Armagnac",
+        description: "Eau-de-vie du Sud-Ouest.",
+        price: "5,00 €",
+      },
+      {
+        name: "Limoncello",
+        description: "Liqueur de citron.",
+        price: "5,00 €",
+      },
+      {
+        name: "Calvados",
+        description: "Eau-de-vie de cidre.",
+        price: "5,00 €",
+      },
+      {
+        name: "Get 27 (3 cl)",
+        description: "Liqueur de menthe verte.",
+        price: "5,00 €",
+      },
+      {
+        name: "Get 31 (3 cl)",
+        description: "Liqueur de menthe blanche.",
+        price: "5,00 €",
+      },
+      {
+        name: "Tequila (2 shots)",
+        description: "Deux shots de tequila.",
+        price: "6,00 €",
+      },
+      {
+        name: "Tek Paf",
+        description: "Rituel shot de tequila, sel et citron.",
+        price: "7,00 €",
+      },
+      {
+        name: "Cognac",
+        description: "Eau-de-vie de vin.",
+        price: "8,00 €",
+      },
+      {
+        name: "Cognac Hennessy (bouteille)",
+        description: "Cognac Hennessy en bouteille.",
+        price: "120,00 €",
       },
     ],
   },

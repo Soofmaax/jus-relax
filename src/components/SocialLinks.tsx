@@ -7,7 +7,7 @@ interface SocialLinksProps {
    * - affiche des liens \"gris\" si aucun réseau n'est encore configuré
    * - ne pointe vers aucune URL réelle tant que les champs JSON sont vides
    */
-  demon;
+  demo?: boolean;
 }
 
 export default function SocialLinks({ social, demo = false }: SocialLinksProps) {

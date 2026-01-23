@@ -6,6 +6,7 @@ import { justRelaxData } from "@/lib/just-relax-data";
 import { SITE_URL, defaultLocale } from "@/lib/seo";
 import { getReservationInfo } from "@/lib/reservation";
 import SocialLinks from "@/components/SocialLinks";
+import StickyHeader from "@/components/StickyHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -116,6 +117,7 @@ export default function RootLayout({
     priceRange: "€€",
     servesCuisine: [
       "Cuisine variée",
+      "Cuisine halal",
       "Burgers",
       "Tapas",
     ],
@@ -149,75 +151,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-          <header className="sticky top-0 z-30 border-b border-white/10 bg-black/60/90 backdrop-blur-xl">
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-              <Link href="/" className="flex items-baseline gap-2">
-                <span className="text-base font-semibold tracking-tight uppercase text-amber-400 sm:text-lg">
-                  {justRelaxData.name}
-                </span>
-                <span className="hidden text-xs text-slate-300 sm:inline">
-                  {justRelaxData.tagline}
-                </span>
-              </Link>
-              <nav
-                aria-label="Navigation principale"
-                className="flex items-center gap-3 text-xs font-medium sm:gap-5 sm:text-sm"
-              >
-                <Link
-                  href="/menu"
-                  className="text-slate-200 transition-colors hover:text-amber-300"
-                >
-                  Notre menu
-                </Link>
-                <Link
-                  href="/menu#reserve"
-                  className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
-                >
-                  Faire une réservation
-                </Link>
-                <Link
-                  href="/galerie"
-                  className="text-slate-200 transition-colors hover:text-amber-300"
-                >
-                  Galerie
-                </Link>
-                <Link
-                  href="/evenements"
-                  className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
-                >
-                  Événements
-                </Link>
-                <Link
-                  href="/acces-horaires"
-                  className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
-                >
-                  Accès &amp; horaires
-                </Link>
-                <Link
-                  href="/contact"
-                  className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
-                >
-                  Nous contacter
-                </Link>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={reservation.href}
-                    target={reservation.target}
-                    rel={reservation.rel}
-                    className="hidden rounded-full bg-amber-400 px-3 py-1.5 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:inline-flex sm:px-4 sm:text-sm"
-                  >
-                    {reservation.label}
-                  </a>
-                  <a
-                    href={phoneHref}
-                    className="inline-flex rounded-full border border-white/30 px-3 py-1.5 text-[11px] font-semibold text-slate-100 shadow-sm transition hover:border-amber-300/80 hover:text-amber-200 sm:px-4 sm:text-xs"
-                  >
-                    Appeler
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </header>
+          <StickyHeader />
           <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
             {children}
           </main>
@@ -277,7 +211,9 @@ export default function RootLayout({
                     ))}
                   </div>
                 )}
-                <SocialLinks social={justRelaxData.social} demo />
+                {socialLinks.length > 0 && (
+                  <SocialLinks social={justRelaxData.social} />
+                )}
               </div>
               <div className="flex flex-col gap-2 text-xs text-slate-400 sm:text-right">
                 <p>
