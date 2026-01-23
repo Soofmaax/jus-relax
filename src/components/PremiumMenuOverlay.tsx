@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { digitalMenuCategories } from "@/lib/menu-content";
 
 type MenuGroupKey = "cuisine" | "boissons" | "chicha";
@@ -89,8 +89,23 @@ const GROUP_SUBTITLES: Record<MenuGroupKey, string> = {
 export default function PremiumMenuOverlay() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeGroup, setActiveGroup] = useState<MenuGroupKey>("cuisine");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const items = groupedItems[activeGroup];
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+    const handleMouseMove = (event: MouseEvent) => {
+      setMousePosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [isOpen]);
 
   return (
     <>
@@ -98,27 +113,36 @@ export default function PremiumMenuOverlay() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group fixed right-4 top-24 z-40 inline-flex items-center gap-3 rounded-full bg-[#faf8f3]/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#2d2416] shadow-md shadow-black/10 backdrop-blur-md transition hover:scale-105 hover:bg-white sm:right-6 sm:top-24"
+        className="group fixed right-4 top-24 z-40 inline-flex items-center gap-3 rounded-full border border-[#faf8f3]/30 bg-[#faf8f3]/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#faf8f3] shadow-md shadow-black/40 backdrop-blur-xl transition hover:translate-y-[-2px] hover:bg-[#d946a6]/25 hover:text-white sm:right-6 sm:top-24"
         aria-label="Ouvrir le menu immersif"
       >
         <span className="hidden text-[10px] sm:inline">
-          Menu immersif
+          Carte immersive
         </span>
         <span className="flex flex-col gap-1">
-          <span className="h-[2px] w-7 rounded-full bg-[#2d2416] transition group-hover:w-9" />
-          <span className="h-[2px] w-5 rounded-full bg-[#2d2416] transition group-hover:w-8" />
-          <span className="h-[2px] w-6 rounded-full bg-[#2d2416] transition group-hover:w-7" />
+          <span className="h-[2px] w-7 rounded-full bg-[#faf8f3] transition group-hover:w-9" />
+          <span className="h-[2px] w-5 rounded-full bg-[#faf8f3] transition group-hover:w-8" />
+          <span className="h-[2px] w-6 rounded-full bg-[#faf8f3] transition group-hover:w-7" />
         </span>
       </button>
 
       {/* Overlay plein écran */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#2d2416]/[0.98] px-4 py-8 backdrop-blur-2xl sm:px-6 md:px-10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0806]/[0.96] bg-[radial-gradient(circle_at_20%_40%,rgba(124,148,115,0.18),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(217,70,166,0.18),transparent_60%)] px-4 py-8 backdrop-blur-3xl sm:px-6 md:px-10">
+          {/* Halo qui suit le curseur */}
+          <div
+            className="pointer-events-none fixed h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(217,70,166,0.12)_0%,_transparent_70%)] blur-[90px] transition-transform duration-200 ease-out"
+            style={{
+              left: mousePosition.x - 160,
+              top: mousePosition.y - 160,
+            }}
+          />
+
           {/* Bouton de fermeture */}
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="absolute right-4 top-4 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full text-3xl font-light text-[#faf8f3] transition hover:rotate-90 hover:text-[#d946a6] sm:right-8 sm:top-6"
+            className="absolute right-4 top-4 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#faf8f3]/20 bg-white/5 text-3xl font-light text-[#faf8f3] shadow-lg shadow-black/50 backdrop-blur-xl transition hover:rotate-90 hover:border-[#d946a6]/60 hover:bg-[#d946a6]/25 hover:text-white sm:right-8 sm:top-6"
             aria-label="Fermer le menu"
           >
             ×
@@ -148,7 +172,7 @@ export default function PremiumMenuOverlay() {
                       ].join(" ")}
                     >
                       {isActive && (
-                        <span className="absolute left-0 h-10 w-1 rounded-full bg-gradient-to-b from-[#d946a6] to-[#f472b6]" />
+                        <span className="absolute left-0 h-10 w-1 rounded-full bg-gradient-to-b from-[#d946a6] to-[#f472b6] shadow-[0_0_18px_rgba(217,70,166,0.6)]" />
                       )}
                       <span
                         className={[
@@ -164,13 +188,13 @@ export default function PremiumMenuOverlay() {
               </div>
 
               {/* Petit bloc décoratif / message qualité */}
-              <div className="mt-8 border-t border-[#d4c5b0]/20 pt-4 text-[11px] text-[#a39689]">
+              <div className="mt-8 rounded-2xl border border-[#7c9473]/30 bg-[#7c9473]/10 px-4 py-3 text-[11px] text-[#a39689] backdrop-blur-md">
                 <p className="font-semibold tracking-[0.18em] text-[#7c9473]">
                   CUISINE MAISON &amp; SÉLECTION SOIGNÉE
                 </p>
                 <p className="mt-1 leading-relaxed">
-                  Carte issue du Just Menu&nbsp;: plats, desserts, cocktails &
-                  chicha, adaptés pour une lecture confortable sur mobile.
+                  Carte issue du Just Menu&nbsp;: plats, desserts, cocktails &amp;
+                  chicha, adaptée pour une expérience digitale immersive.
                 </p>
               </div>
             </div>
@@ -184,24 +208,31 @@ export default function PremiumMenuOverlay() {
                 {items.map((item) => (
                   <div
                     key={`${activeGroup}-${item.name}-${item.price}`}
-                    className="group rounded-xl px-4 py-4 transition duration-300 hover:translate-x-4 hover:bg-[#7c9473]/10 sm:px-6 sm:py-5"
+                    className="group rounded-2xl px-4 py-4 transition duration-500 hover:translate-x-4 hover:bg-[#7c9473]/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:px-6 sm:py-5"
                   >
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-lg font-light tracking-[0.04em] text-[#faf8f3] sm:text-2xl">
-                        {item.name}
-                      </h3>
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-light tracking-[0.04em] text-[#faf8f3] sm:text-2xl">
+                          {item.name}
+                        </h3>
+                        {item.description && (
+                          <p className="text-sm italic text-[#a39689] sm:text-base">
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
                       {item.price && (
-                        <div className="shrink-0 text-base font-semibold text-[#d946a6] sm:text-xl">
-                          {item.price}
+                        <div className="flex flex-col items-start sm:items-end">
+                          <div className="text-2xl font-light text-[#d946a6] sm:text-3xl">
+                            {item.price}
+                          </div>
+                          <div className="text-[10px] uppercase tracking-[0.18em] text-[#a39689]">
+                            EUR
+                          </div>
                         </div>
                       )}
                     </div>
-                    {item.description && (
-                      <p className="mt-1 text-sm italic text-[#a39689] sm:text-base">
-                        {item.description}
-                      </p>
-                    )}
-                    <div className="mt-3 h-px w-16 bg-gradient-to-r from-[#d946a6] to-transparent" />
+                    <div className="mt-3 h-px w-16 bg-gradient-to-r from-[#d946a6] via-[#f472b6] to-transparent transition-all duration-500 group-hover:w-24" />
                   </div>
                 ))}
               </div>
