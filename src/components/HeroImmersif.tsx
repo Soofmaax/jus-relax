@@ -95,10 +95,10 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
 
           <div className="flex flex-wrap gap-2 text-[11px] text-[#6b5d4f]">
             <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#d4c5b0]">
-              🧑🏻‍🍳 Cuisine 100 % halal &amp; cocktails
+              🧑🏻‍🍳 Cuisine 100 % halal
             </span>
             <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#d4c5b0]">
-              💨 Terrasse privée &amp; lounge
+              💨 Terrasse &amp; lounge chicha
             </span>
             <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#d4c5b0]">
               Lun–Ven 11h–02h · Sam–Dim 15h–02h
