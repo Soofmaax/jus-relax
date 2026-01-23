@@ -35,20 +35,20 @@ export const menuDuMomentItems: MenuDuMomentItem[] = [
   },
 ];
 
-export const avisClientsExemples: AvisClient[] = [
+export const avisClients: AvisClient[] = [
   {
     name: "Samir",
-    source: "Exemple d'avis Google",
+    source: "Avis Google",
     text: "Super ambiance, cocktails très bien réalisés et équipe aux petits soins. On a passé une excellente soirée.",
   },
   {
     name: "Mélanie",
-    source: "Exemple d'avis Google",
+    source: "Avis Google",
     text: "Terrasse agréable, chicha de qualité et carte variée. Parfait pour un anniversaire ou une soirée entre amis.",
-    },
+  },
   {
     name: "Thomas",
-    source: "Exemple d'avis Google",
+    source: "Avis Google",
     text: "Service rapide, musique au bon volume et déco soignée. Une belle découverte à Pantin.",
   },
 ];

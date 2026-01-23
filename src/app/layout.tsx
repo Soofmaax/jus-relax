@@ -210,7 +210,9 @@ export default function RootLayout({
                     ))}
                   </div>
                 )}
-                <SocialLinks social={justRelaxData.social} demo />
+                {socialLinks.length > 0 && (
+                  <SocialLinks social={justRelaxData.social} />
+                )}
               </div>
               <div className="flex flex-col gap-2 text-xs text-slate-400 sm:text-right">
                 <p>

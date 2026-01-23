@@ -20,6 +20,10 @@ export default function ContactPage() {
 
   const mapUrl = justRelaxData.contact.address.mapUrl;
 
+  const hasSocial = Object.values(justRelaxData.social).some(
+    (value) => value && value.trim().length > 0
+  );
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section title="Contact" eyebrow="Nous écrire ou réserver">
@@ -68,17 +72,14 @@ export default function ContactPage() {
               )}
             </div>
             <CTAButtons data={justRelaxData} layout="inline" />
-            <div className="pt-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
-                Nous suivre
-              </h2>
-              <p className="mt-1 text-[11px] text-slate-400">
-                Les badges ci-dessous illustrent l&apos;emplacement de vos futurs
-                liens Instagram, Facebook ou TikTok. Ils seront reliés à vos
-                comptes officiels dès que les URLs seront renseignées.
-              </p>
-              <SocialLinks social={justRelaxData.social} demo />
-            </div>
+            {hasSocial && (
+              <div className="pt-2">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+                  Nous suivre
+                </h2>
+                <SocialLinks social={justRelaxData.social} />
+              </div>
+            )}
           </div>
           <div className="space-y-6">
             <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40 sm:p-6">
