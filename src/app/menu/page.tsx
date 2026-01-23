@@ -65,9 +65,7 @@ export default function MenuPage() {
 
   const menuSections = digitalMenuCategories
     .map((category) => {
-      const items = category.items.filter(
-        (item) => !item.isHighlight && !item.isPlaceholder
-      );
+      const items = category.items.filter((item) => !item.isHighlight);
       if (items.length === 0) {
         return undefined;
       }
@@ -94,7 +92,9 @@ export default function MenuPage() {
         }),
       };
     })
-    .filter((section): section is Record<string, unknown> => Boolean(section));
+    .filter(
+      (section): section is NonNullable<typeof section> => Boolean(section)
+    );
 
   const menuJsonLd = {
     "@context": "https://schema.org",
