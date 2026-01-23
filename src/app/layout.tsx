@@ -135,7 +135,7 @@ export default function RootLayout({
       .map((menu) => menu.pdfUrl as string),
   ];
 
-  const jsonLd: Record&lt;string, unknown&gt; = {
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "@id": `${SITE_URL}/#restaurant`,
@@ -167,14 +167,14 @@ export default function RootLayout({
       "@type": "City",
       name: justRelaxData.contact.address.city,
     },
-    sameAs: socialLinks.length &gt; 0 ? socialLinks : undefined,
+    sameAs: socialLinks.length > 0 ? socialLinks : undefined,
     hasMenu: menuUrls,
   };
 
   const { latitude, longitude } = justRelaxData.contact.address;
 
-  if (latitude &amp;&amp; longitude) {
-    (jsonLd as Record&lt;string, unknown&gt;).geo = {
+  if (latitude && longitude) {
+    (jsonLd as Record<string, unknown>).geo = {
       "@type": "GeoCoordinates",
       latitude,
       longitude,
@@ -182,7 +182,7 @@ export default function RootLayout({
   }
 
   if (justRelaxData.contact.phoneMain) {
-    (jsonLd as Record&lt;string, unknown&gt;).contactPoint = [
+    (jsonLd as Record<string, unknown>).contactPoint = [
       {
         "@type": "ContactPoint",
         telephone: justRelaxData.contact.phoneMain,
@@ -193,7 +193,7 @@ export default function RootLayout({
     ];
   }
 
-  const websiteJsonLd: Record&lt;string, unknown&gt; = {
+  const websiteJsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,

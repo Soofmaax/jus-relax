@@ -165,7 +165,7 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
                 <Image
                   src={data.heroImage}
                   alt={
-                    (data.seo && "title" in data.seo && (data.seo as any).title) ||
+                    data.seo?.title ||
                     `${data.name} – Restaurant & Lounge à Pantin`
                   }
                   fill
