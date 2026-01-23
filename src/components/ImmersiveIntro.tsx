@@ -38,7 +38,7 @@ export default function ImmersiveIntro({ open, onEnter }: ImmersiveIntroProps) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-40 flex items-center justify-center bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900"
+          className="fixed inset-0 z-40 flex items-center justify-center bg-gradient-to-b from-[#383131] via-[#5a4641] to-[#faf5ef]"
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
@@ -49,19 +49,19 @@ export default function ImmersiveIntro({ open, onEnter }: ImmersiveIntroProps) {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 overflow-hidden"
           >
-            <div className="absolute -left-24 top-[-10%] h-[380px] w-[380px] rounded-full bg-fuchsia-500/15 blur-3xl" />
-            <div className="absolute -right-24 bottom-[-10%] h-[420px] w-[420px] rounded-full bg-amber-400/15 blur-3xl" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(248,250,252,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.96),_transparent_60%)]" />
-            <div className="absolute bottom-0 left-1/2 h-[260px] w-[520px] -translate-x-1/2 bg-[radial-gradient(circle,_rgba(15,23,42,1)_0%,_rgba(15,23,42,0)_70%)]" />
+            <div className="absolute -left-24 top-[-10%] h-[380px] w-[380px] rounded-full bg-[#d58c64]/18 blur-3xl" />
+            <div className="absolute -right-24 bottom-[-10%] h-[420px] w-[420px] rounded-full bg-[#bea9a9]/20 blur-3xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.8),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(56,49,49,0.9),_transparent_60%)]" />
+            <div className="absolute bottom-0 left-1/2 h-[260px] w-[520px] -translate-x-1/2 bg-[radial-gradient(circle,_rgba(56,49,49,1)_0%,_rgba(56,49,49,0)_70%)]" />
             {/* Tronc stylisé */}
-            <div className="absolute bottom-0 left-1/2 h-[260px] w-[3px] -translate-x-1/2 bg-gradient-to-t from-slate-900 via-slate-700 to-slate-500 shadow-[0_0_40px_rgba(148,163,184,0.6)]" />
+            <div className="absolute bottom-0 left-1/2 h-[260px] w-[3px] -translate-x-1/2 bg-gradient-to-t from-[#3b2b28] via-[#70524b] to-[#c9a89a] shadow-[0_0_40px_rgba(201,168,154,0.7)]" />
             {/* Branches minimalistes */}
-            <div className="absolute bottom-28 left-1/2 h-[2px] w-40 -translate-x-full -rotate-[12deg] bg-gradient-to-r from-slate-500 via-rose-300/80 to-transparent" />
-            <div className="absolute bottom-32 left-1/2 h-[2px] w-40 translate-x-1 rotate-[10deg] bg-gradient-to-l from-slate-500 via-rose-300/80 to-transparent" />
+            <div className="absolute bottom-28 left-1/2 h-[2px] w-40 -translate-x-full -rotate-[12deg] bg-gradient-to-r from-[#70524b] via-[#f4d0bb] to-transparent" />
+            <div className="absolute bottom-32 left-1/2 h-[2px] w-40 translate-x-1 rotate-[10deg] bg-gradient-to-l from-[#70524b] via-[#f4d0bb] to-transparent" />
           </div>
 
           <motion.div
-            className="relative z-10 mx-4 max-w-xl rounded-[2rem] border border-white/10 bg-black/60 px-6 py-8 shadow-[0_30px_80px_rgba(0,0,0,0.9)] backdrop-blur-2xl sm:px-8 sm:py-10"
+            className="relative z-10 mx-4 max-w-xl rounded-[2rem] border border-[#e1d5cc] bg-[#fdf8f4]/95 px-6 py-8 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-8 sm:py-10"
             initial={
               shouldReduceMotion
                 ? { opacity: 1 }
@@ -79,31 +79,31 @@ export default function ImmersiveIntro({ open, onEnter }: ImmersiveIntroProps) {
             }
             transition={{ duration: shouldReduceMotion ? 0.3 : 0.75, ease: "easeOut" }}
           >
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300/50 bg-amber-300/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-amber-100">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#d58c64]/50 bg-[#d58c64]/12 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#744941]">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(34,197,94,0.4)]" />
               <span>Pantin · 7j/7 jusqu&apos;à 2h</span>
             </div>
 
             <div className="space-y-4">
-              <h1 className="font-display text-balance text-3xl font-semibold text-slate-50 sm:text-4xl">
+              <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#322] sm:text-4xl">
                 Just Relax
-                <span className="block text-lg font-normal text-amber-200 sm:text-xl">
+                <span className="block text-lg font-normal text-[#d58c64] sm:text-xl">
                   Restaurant &amp; Lounge
                 </span>
               </h1>
-              <p className="text-sm text-slate-200/90 sm:text-base">
+              <p className="text-sm text-[#5b4a42] sm:text-base">
                 Une adresse intimiste à Pantin&nbsp;: cuisine soignée, cocktails signatures,
                 terrasse privée &amp; lounge chicha. Laissez les lumières de la ville
                 derrière vous, entrez, et juste… relaxez-vous.
               </p>
-              <div className="flex flex-wrap gap-2 text-[11px] text-slate-200/90">
-                <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-1">
+              <div className="flex flex-wrap gap-2 text-[11px] text-[#5b4a42]">
+                <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#e1d5cc]">
                   🧑🏻‍🍳 Cuisine &amp; cocktails
                 </span>
-                <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-1">
+                <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#e1d5cc]">
                   💨 Terrasse privée &amp; lounge
                 </span>
-                <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-1">
+                <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#e1d5cc]">
                   Lun–Ven 11h–02h · Sam–Dim 15h–02h
                 </span>
               </div>

@@ -56,44 +56,44 @@ export default function StickyHeader() {
       }
       style={{ pointerEvents: isVisible ? "auto" : "none" }}
     >
-      <div className="border-b border-white/10 bg-black/70/90 backdrop-blur-xl">
+      <div className="border-b border-[#e1d5cc] bg-[#faf5ef]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6">
           <Link href="/" className="flex items-baseline gap-2">
-            <span className="text-sm font-semibold tracking-tight uppercase text-amber-300 sm:text-base">
+            <span className="text-sm font-semibold tracking-tight uppercase text-[#744941] sm:text-base">
               {justRelaxData.name}
             </span>
-            <span className="hidden text-[11px] text-slate-300 sm:inline">
+            <span className="hidden text-[11px] text-[#6b5a52] sm:inline">
               {justRelaxData.tagline}
             </span>
           </Link>
-          <nav className="flex items-center gap-3 text-[11px] font-medium sm:gap-5 sm:text-xs">
+          <nav className="flex items-center gap-3 text-[11px] font-medium text-[#322] sm:gap-5 sm:text-xs">
             <Link
               href="/menu"
-              className="text-slate-200 transition-colors hover:text-amber-300"
+              className="transition-colors hover:text-[#d58c64]"
             >
               Menu
             </Link>
             <Link
               href="/reservation"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d58c64] sm:inline"
             >
               Réserver
             </Link>
             <Link
               href="/galerie"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d58c64] sm:inline"
             >
               Galerie
             </Link>
             <Link
               href="/evenements"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d58c64] sm:inline"
             >
               Événements
             </Link>
             <Link
               href="/contact"
-              className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+              className="hidden transition-colors hover:text-[#d58c64] sm:inline"
             >
               Contact
             </Link>
@@ -102,13 +102,13 @@ export default function StickyHeader() {
                 href={reservation.href}
                 target={reservation.target}
                 rel={reservation.rel}
-                className="hidden rounded-full bg-amber-400 px-3 py-1.5 text-[11px] font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:inline-flex"
+                className="hidden rounded-full bg-[#d58c64] px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-[#e0aa8c]/80 transition hover:bg-[#e0aa8c] hover:ring-[#f2d2b9] sm:inline-flex"
               >
                 {reservation.label}
               </a>
               <a
                 href={phoneHref}
-                className="inline-flex rounded-full border border-white/30 px-3 py-1.5 text-[11px] font-semibold text-slate-100 shadow-sm transition hover:border-amber-300/80 hover:text-amber-200"
+                className="inline-flex rounded-full border border-[#d0c4b8] px-3 py-1.5 text-[11px] font-semibold text-[#322] shadow-sm transition hover:border-[#d58c64] hover:text-[#d58c64]"
               >
                 Appeler
               </a>

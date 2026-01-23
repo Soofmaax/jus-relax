@@ -54,10 +54,10 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-[2.6rem] border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-8 shadow-[0_40px_80px_rgba(0,0,0,0.9)] sm:px-8 sm:py-10">
+    <section className="relative overflow-hidden rounded-[2.6rem] border border-[#e1d5cc] bg-[#fdf8f4] px-4 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.14)] sm:px-8 sm:py-10">
       {/* Ambient background + pétales */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.09),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.95),_transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(213,140,100,0.18),_transparent_60%),radial-gradient(circle_at_bottom,_rgba(190,160,140,0.35),_transparent_70%)]" />
         <PetalsCanvas intensity={0.6} />
       </div>
 
@@ -77,30 +77,30 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
         transition={shouldReduceMotion ? undefined : { type: "spring", stiffness: 120, damping: 18 }}
       >
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-amber-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(16,185,129,0.45)]" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#d58c64]/40 bg-[#d58c64]/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#744941]">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(34,197,94,0.45)]" />
             <span>Pantin · 7j/7 jusqu&apos;à 2h</span>
           </div>
-          <h1 className="font-display text-balance text-3xl font-semibold text-slate-50 sm:text-4xl md:text-5xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#322] sm:text-4xl md:text-5xl">
             {data.name}
-            <span className="block text-lg font-normal text-amber-200 sm:text-xl">
+            <span className="block text-lg font-normal text-[#d58c64] sm:text-xl">
               Restaurant &amp; Lounge
             </span>
           </h1>
-          <p className="max-w-xl text-pretty text-sm text-slate-200/90 sm:text-base">
+          <p className="max-w-xl text-pretty text-sm text-[#5b4a42] sm:text-base">
             Cuisine généreuse 100 % halal, cocktails signatures, terrasse privée &amp; lounge chicha
             au cœur de Pantin (93500). Une adresse intimiste pour prolonger vos
             soirées dans l&apos;Est parisien.
           </p>
 
-          <div className="flex flex-wrap gap-2 text-[11px] text-slate-100/90">
-            <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 ring-1 ring-white/15">
+          <div className="flex flex-wrap gap-2 text-[11px] text-[#4a3a34]">
+            <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#e1d5cc]">
               🧑🏻‍🍳 Cuisine 100 % halal &amp; cocktails
             </span>
-            <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 ring-1 ring-white/15">
+            <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#e1d5cc]">
               💨 Terrasse privée &amp; lounge
             </span>
-            <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 ring-1 ring-white/15">
+            <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 ring-1 ring-[#e1d5cc]">
               Lun–Ven 11h–02h · Sam–Dim 15h–02h
             </span>
           </div>
@@ -109,9 +109,9 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
             <CTAButtons data={data} context="hero" />
           </div>
 
-          <div className="mt-3 grid gap-3 text-xs text-slate-300 sm:grid-cols-3">
+          <div className="mt-3 grid gap-3 text-xs text-[#5b4a42] sm:grid-cols-3">
             <div className="space-y-1">
-              <p className="font-semibold text-slate-100">Adresse</p>
+              <p className="font-semibold text-[#322]">Adresse</p>
               <p>
                 {data.contact.address.line1}
                 <br />
@@ -119,7 +119,7 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
               </p>
             </div>
             <div className="space-y-1">
-              <p className="font-semibold text-slate-100">Horaires</p>
+              <p className="font-semibold text-[#322]">Horaires</p>
               {data.openingHours.slice(0, 2).map((range) => (
                 <p key={range.days}>
                   <span className="block font-medium text-slate-50">
@@ -134,15 +134,15 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
               ))}
             </div>
             <div className="space-y-1">
-              <p className="font-semibold text-slate-100">Services</p>
+              <p className="font-semibold text-[#322]">Services</p>
               <div className="mt-1 flex flex-wrap gap-1.5">
-                <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-amber-100 ring-1 ring-white/10">
+                <span className="inline-flex items-center rounded-full bg-[#f5ebe1] px-2.5 py-1 text-[11px] text-[#744941] ring-1 ring-[#e1d5cc]">
                   Terrasse privée
                 </span>
-                <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-amber-100 ring-1 ring-white/10">
+                <span className="inline-flex items-center rounded-full bg-[#f5ebe1] px-2.5 py-1 text-[11px] text-[#744941] ring-1 ring-[#e1d5cc]">
                   Chicha premium
                 </span>
-                <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-amber-100 ring-1 ring-white/10">
+                <span className="inline-flex items-center rounded-full bg-[#f5ebe1] px-2.5 py-1 text-[11px] text-[#744941] ring-1 ring-[#e1d5cc]">
                   Événements privés
                 </span>
               </div>
@@ -152,11 +152,11 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
 
         <div className="relative">
           <motion.div
-            className="absolute -inset-10 rounded-[3rem] bg-amber-400/25 blur-3xl"
+            className="absolute -inset-10 rounded-[3rem] bg-[#d58c64]/20 blur-3xl"
             style={shouldReduceMotion ? undefined : { opacity: glowOpacity }}
-            aria-hidden="true"
+            aria-hidden={true}
           />
-          <div className="relative overflow-hidden rounded-[2.25rem] border border-white/15 bg-black/60 shadow-2xl shadow-black/80">
+          <div className="relative overflow-hidden rounded-[2.25rem] border border-[#e1d5cc] bg-[#1f1410] shadow-2xl shadow-black/80">
             <div className="relative aspect-[4/3] w-full">
               {data.heroImage && (
                 <Image
