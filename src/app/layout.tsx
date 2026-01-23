@@ -91,6 +91,39 @@ export default function RootLayout({
     })
     .filter((v): v is string => Boolean(v));
 
+  const openingHoursSpecification = justRelaxData.openingHours.flatMap(
+    (range) => {
+      const text = range.days.toLowerCase();
+      const slot = range.slots[0];
+      if (!slot) {
+        return [];
+      }
+
+      const days: string[] = [];
+
+      if (text.includes("lundi") && text.includes("vendredi")) {
+        days.push("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
+      } else if (text.includes("samedi") && text.includes("dimanche")) {
+        days.push("Saturday", "Sunday");
+      } else {
+        if (text.includes("lundi")) days.push("Monday");
+        if (text.includes("mardi")) days.push("Tuesday");
+        if (text.includes("mercredi")) days.push("Wednesday");
+        if (text.includes("jeudi")) days.push("Thursday");
+        if (text.includes("vendredi")) days.push("Friday");
+        if (text.includes("samedi")) days.push("Saturday");
+        if (text.includes("dimanche")) days.push("Sunday");
+      }
+
+      return days.map((day) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: `https://schema.org/${day}`,
+        opens: slot.from,
+        closes: slot.to,
+      }));
+    }
+  );
+
   const socialLinks = Object.values(justRelaxData.social).filter(
     (value): value is string => Boolean(value && value.trim().length > 0)
   );
@@ -120,6 +153,7 @@ export default function RootLayout({
       addressCountry: justRelaxData.contact.address.country,
     },
     openingHours: openingHoursForSchema,
+    openingHoursSpecification,
     priceRange: "€€",
     servesCuisine: [
       "Cuisine variée",
@@ -128,6 +162,7 @@ export default function RootLayout({
       "Tapas",
     ],
     acceptsReservations: true,
+    hasMap: justRelaxData.contact.address.mapUrl || undefined,
     areaServed: {
       "@type": "City",
       name: justRelaxData.contact.address.city,

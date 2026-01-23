@@ -6,6 +6,7 @@ import MapEmbed from "@/components/MapEmbed";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 import ContactForm from "@/components/ContactForm";
 
@@ -26,6 +27,17 @@ export default function ContactPage() {
     (value) => value && value.trim().length > 0
   );
 
+  const contactJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${SITE_URL.replace(/\/$/, "")}/contact#contact-page`,
+    url: `${SITE_URL.replace(/\/$/, "")}/contact`,
+    about: {
+      "@id": `${SITE_URL.replace(/\/$/, "")}/#restaurant`,
+    },
+    inLanguage: "fr-FR",
+  };
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Breadcrumbs
@@ -39,6 +51,11 @@ export default function ContactPage() {
           { label: "Accueil", href: "/" },
           { label: "Contact", href: "/contact" },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
       <Section title="Contact" eyebrow="Nous écrire ou réserver">
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">

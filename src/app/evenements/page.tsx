@@ -4,6 +4,7 @@ import CTAButtons from "@/components/CTAButtons";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 
 export const metadata: Metadata = pageSeo.evenements;
@@ -32,6 +33,21 @@ export default function EvenementsPage() {
     },
   ];
 
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${baseUrl}/evenements#faq`,
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
       <Breadcrumbs
@@ -45,6 +61,11 @@ export default function EvenementsPage() {
           { label: "Accueil", href: "/" },
           { label: "Privatisation & événements", href: "/evenements" },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Section
         title="Privatisation & événements privés"

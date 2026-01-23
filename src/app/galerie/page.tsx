@@ -4,12 +4,35 @@ import GalleryGrid from "@/components/GalleryGrid";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { SITE_URL } from "@/lib/seo";
 import { pageSeo } from "@/lib/page-seo";
 import GalleryLightbox from "@/components/GalleryLightbox";
 
 export const metadata: Metadata = pageSeo.galerie;
 
 export default function GaleriePage() {
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+
+  const images = justRelaxData.gallery.flatMap((group) =>
+    group.images.map((image) => ({
+      "@type": "ImageObject",
+      url: image.url,
+      caption: image.alt,
+    }))
+  );
+
+  const galleryJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${baseUrl}/galerie#gallery`,
+    url: `${baseUrl}/galerie`,
+    name: `Galerie photos – ${justRelaxData.name}`,
+    about: {
+      "@id": `${baseUrl}/#restaurant`,
+    },
+    hasPart: images,
+  };
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
       <Breadcrumbs
@@ -23,6 +46,11 @@ export default function GaleriePage() {
           { label: "Accueil", href: "/" },
           { label: "Galerie photos", href: "/galerie" },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryJsonLd) }}
       />
       <Section
         title="Galerie photos"
