@@ -313,24 +313,26 @@ Les composants principaux sont dans `src/components/` :
 
 ```ts
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://just-relax.fr";
 
 export const defaultLocale = "fr-FR";
 ```
 
-En production, il faut définir :
+- En **local**, vous pouvez laisser `NEXT_PUBLIC_SITE_URL` non défini : le site utilisera alors `https://just-relax.fr` comme base pour les URLs SEO (ce qui est acceptable pour la préprod).
+- En **préproduction** ou **production**, il est recommandé de définir explicitement :
 
 ```bash
-NEXT_PUBLIC_SITE_URL="https://ton-domaine-ou-url-preview.com"
+# Exemple si le site est servi sur le domaine officiel
+NEXT_PUBLIC_SITE_URL="https://just-relax.fr"
 ```
 
-pour que :
+Ainsi :
 
 - les liens du sitemap,
 - les tags OpenGraph,
 - le JSON-LD schema.org “Restaurant”
 
-pointent vers la bonne URL.
+pointeront vers la bonne URL publique.
 
 ---
 
@@ -353,7 +355,83 @@ Le job `CI` exécute, dans cet ordre :
 
 ---
 
-## 10. En résumé
+## 10. Sitemap fonctionnel & carte des composants
+
+### 10.1. Sitemap fonctionnel (pages)
+
+- `/` – Accueil immersive
+  - Hero immersif, CTA de réservation, blocs services, horaires, carte.
+- `/menu` – Cartes & carte digitale
+  - Liste des PDF (Just Menu, Just Boisson, Just Chicha) + carte digitale HTML.
+- `/galerie` – Galerie photos
+  - Grille + lightbox plein écran.
+- `/evenements` – Privatisation & événements
+  - Contenu éditorial + FAQ + CTA de réservation.
+- `/reservation` – Réservation
+  - Explication + CTA + bloc prêt pour le futur widget de réservation.
+- `/acces-horaires` – Accès & horaires
+  - Adresse, horaires, carte intégrée.
+- `/contact` – Contact & formulaire
+  - Téléphone, mail, CTA, formulaire, carte.
+- `/mentions-legales` – Mentions légales
+- `/protection-des-donnees` – Politique de confidentialité
+- `/robots.txt` – Généré par `src/app/robots.ts`
+- `/sitemap.xml` – Généré par `src/app/sitemap.ts`
+
+### 10.2. Carte des composants par page (résumé)
+
+- **Accueil `/`**
+  - `HomePage` → orchestre :
+    - `ImmersiveIntro`
+    - `HeroImmersif`
+    - `DeliveryPlatforms`
+    - `ServicesBadges`
+    - `PaymentsBadges`
+    - `HoursSection`
+    - `MapSection`
+
+- **Menu `/menu`**
+  - `Section` (cartes PDF)
+  - `MenuItemCard` (carte digitale)
+  - `CTAButtons` (bloc réservation)
+  - Données : `justRelaxData.menus`, `digitalMenuCategories`
+
+- **Galerie `/galerie`**
+  - `Section`
+  - `GalleryLightbox` (utilise `justRelaxData.gallery`)
+
+- **Événements `/evenements`**
+  - `Section` (x2)
+  - `CTAButtons`
+
+- **Accès & horaires `/acces-horaires`**
+  - `Section`
+  - `OpeningHours`
+  - `MapEmbed`
+
+- **Contact `/contact`**
+  - `Section`
+  - `CTAButtons`
+  - `ContactForm` (branché sur `/api/contact`)
+  - `SocialLinks` (si réseaux renseignés)
+  - `MapEmbed`
+
+- **Réservation `/reservation`**
+  - `Section` (x2)
+  - `CTAButtons`
+  - `OpeningHours`
+  - `MapEmbed`
+
+- **Mentions légales / Protection des données**
+  - `Section`
+  - Données : `justRelaxData.legal`, `justRelaxData.contact`
+
+- **Layout global**
+  - `StickyHeader` (nav + CTA)
+  - Footer : coordonnées, horaires condensés, `SocialLinks` (si configurés), lien `/mentions-legales`
+  - JSON-LD Restaurant (`layout.tsx`)
+
+### 10.3. Résumé
 
 - **Données métier & coordonnées** → `data/just-relax.json`
 - **Canal de réservation & libellés CTA** → `data/just-relax.json` + `src/lib/reservation.ts`
@@ -363,4 +441,4 @@ Le job `CI` exécute, dans cet ordre :
 - **Menu – carte digitale** → `src/lib/menu-content.ts`
 - **Textes de pages** → fichiers `src/app/.../page.tsx`
 
-Avec cette organisation, tu peux faire évoluer le site (texte, SEO, réservation) rapidement, sans devoir refactorer tout le code React à chaque fois.
+Avec cette organisation, tu peux faire évoluer le site (texte, SEO, réservation, structure de menu) rapidement, sans devoir refactorer tout le code React.
