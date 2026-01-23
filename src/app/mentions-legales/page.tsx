@@ -11,10 +11,10 @@ export default function MentionsLegalesPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section title="Mentions légales" eyebrow="Informations réglementaires" background="subtle">
-        <div className="space-y-6 text-sm text-slate-100/90">
+        <div className="space-y-6 text-sm text-[#6b5d4f]">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
                 Éditeur du site
               </h2>
               <p>
@@ -28,7 +28,7 @@ export default function MentionsLegalesPage() {
               </p>
             </div>
             <div className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
                 Coordonnées
               </h2>
               <p>
@@ -69,7 +69,7 @@ export default function MentionsLegalesPage() {
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
                 Informations juridiques
               </h2>
               {legal.registrationType && legal.registrationNumber && (
@@ -85,10 +85,10 @@ export default function MentionsLegalesPage() {
               )}
             </div>
             <div className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
                 Hébergement
               </h2>
-              <p className="text-slate-300">
+              <p className="text-[#6b5d4f]">
                 Ce site est hébergé par un prestataire d&apos;infrastructure web
                 professionnel. Les informations complètes relatives à l&apos;hébergeur
                 (raison sociale, adresse, coordonnées) peuvent être communiquées
@@ -97,8 +97,8 @@ export default function MentionsLegalesPage() {
             </div>
           </div>
 
-          <div className="space-y-2 text-xs text-slate-300">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Propriété intellectuelle
             </h2>
             <p>

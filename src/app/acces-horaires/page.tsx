@@ -18,8 +18,8 @@ export default function AccesHorairesPage() {
         eyebrow="Venir chez Just Relax"
       >
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
-          <div className="space-y-5 text-sm text-slate-100/90">
-            <p className="font-semibold text-slate-50">
+          <div className="space-y-5 text-sm text-[#6b5d4f]">
+            <p className="font-semibold text-[#2d2416]">
               {justRelaxData.contact.address.line1}
               <br />
               {justRelaxData.contact.address.postalCode}{" "}
@@ -40,7 +40,7 @@ export default function AccesHorairesPage() {
               mapUrl={mapUrl}
               title={`Plan d'accès à ${justRelaxData.name}`}
             />
-            <p className="mt-2 text-[11px] text-slate-400">
+            <p className="mt-2 text-[11px] text-[#6b5d4f]">
               Si la carte ne s&apos;affiche pas correctement, vérifiez l&apos;URL
               dans <code>data/just-relax.json</code>, champ{" "}
               <code>contact.address.mapUrl</code>.

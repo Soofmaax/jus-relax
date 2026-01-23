@@ -19,7 +19,7 @@ export default function ReservationPage() {
         background="subtle"
       >
         <div className="grid gap-8 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
-          <div className="space-y-4 text-sm text-slate-100/90">
+          <div className="space-y-4 text-sm text-[#6b5d4f]">
             <p>
               Pour un dîner en tête-à-tête, un anniversaire, un afterwork ou un
               événement privé, l&apos;équipe de{` `}
@@ -32,7 +32,7 @@ export default function ReservationPage() {
               les soirées de week-end et les groupes.
             </p>
             <CTAButtons data={justRelaxData} layout="stacked" />
-            <div className="mt-2 text-xs text-slate-400">
+            <div className="mt-2 text-xs text-[#6b5d4f]">
               <p>
                 Horaires habituels&nbsp;: Lun–Ven 11h–02h · Sam–Dim 15h–02h
                 (susceptibles de varier les jours fériés ou en cas
@@ -41,16 +41,16 @@ export default function ReservationPage() {
             </div>
           </div>
           <div className="space-y-4">
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-5 text-sm text-slate-100/90 shadow-lg shadow-black/40 sm:p-6">
-              <h2 className="text-sm font-semibold text-slate-50">
+            <div className="rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-5 text-sm text-[#6b5d4f] shadow-md shadow-black/10 sm:p-6">
+              <h2 className="text-sm font-semibold text-[#2d2416]">
                 Widget de réservation en ligne
               </h2>
-              <p className="mt-2 text-xs text-slate-300">
+              <p className="mt-2 text-xs text-[#6b5d4f]">
                 Cet encart est prévu pour accueillir votre futur widget de
                 réservation (TheFork, plateforme interne, module développé sur
                 mesure, etc.).
               </p>
-              <p className="mt-2 text-xs text-slate-400">
+              <p className="mt-2 text-xs text-[#6b5d4f]">
                 Une fois l&apos;outil choisi, il suffira d&apos;intégrer ici le script
                 ou l&apos;iframe fourni par la plateforme, sans modifier le reste de
                 la page.
@@ -73,8 +73,8 @@ export default function ReservationPage() {
       >
         <div className="grid gap-8 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
           <OpeningHours ranges={justRelaxData.openingHours} />
-          <div className="space-y-3 text-sm text-slate-100/90">
-            <p className="font-semibold text-slate-50">
+          <div className="space-y-3 text-sm text-[#6b5d4f]">
+            <p className="font-semibold text-[#2d2416]">
               {justRelaxData.contact.address.line1}
               <br />
               {justRelaxData.contact.address.postalCode}{" "}

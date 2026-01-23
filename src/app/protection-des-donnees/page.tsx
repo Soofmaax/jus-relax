@@ -13,7 +13,7 @@ export default function ProtectionDesDonneesPage() {
         eyebrow="Politique de confidentialité"
         background="subtle"
       >
-        <div className="space-y-4 text-sm text-slate-100/90">
+        <div className="space-y-4 text-sm text-[#6b5d4f]">
           <p>
             La présente page décrit la manière dont{" "}
             <span className="font-semibold">{justRelaxData.name}</span> traite
@@ -22,8 +22,8 @@ export default function ProtectionDesDonneesPage() {
             mesure d&apos;audience éventuels.
           </p>
 
-          <div className="space-y-2 text-xs text-slate-200/90">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Responsable de traitement
             </h2>
             <p>
@@ -35,8 +35,8 @@ export default function ProtectionDesDonneesPage() {
             </p>
           </div>
 
-          <div className="space-y-2 text-xs text-slate-200/90">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Données collectées
             </h2>
             <p>
@@ -55,8 +55,8 @@ export default function ProtectionDesDonneesPage() {
             </p>
           </div>
 
-          <div className="space-y-2 text-xs text-slate-200/90">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Base légale &amp; durée de conservation
             </h2>
             <p>
@@ -71,8 +71,8 @@ export default function ProtectionDesDonneesPage() {
             </p>
           </div>
 
-          <div className="space-y-2 text-xs text-slate-200/90">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Destinataires des données
             </h2>
             <p>
@@ -84,8 +84,8 @@ export default function ProtectionDesDonneesPage() {
             </p>
           </div>
 
-          <div className="space-y-2 text-xs text-slate-200/90">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Vos droits
             </h2>
             <p>
@@ -107,8 +107,8 @@ export default function ProtectionDesDonneesPage() {
             </p>
           </div>
 
-          <div className="space-y-2 text-xs text-slate-200/90">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+          <div className="space-y-2 text-xs text-[#6b5d4f]">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
               Cookies &amp; mesure d&apos;audience
             </h2>
             <p>
@@ -120,7 +120,7 @@ export default function ProtectionDesDonneesPage() {
             </p>
           </div>
 
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[11px] text-[#6b5d4f]">
             Cette page pourra être ajustée et complétée en fonction des outils
             finalement utilisés (solution de réservation en ligne, analytics,
             hébergeur définitif, etc.).

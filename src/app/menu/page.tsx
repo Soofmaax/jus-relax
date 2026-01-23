@@ -24,27 +24,27 @@ export default function MenuPage() {
         title="Nos cartes"
         eyebrow="Just Menu · Just Boisson · Just Chicha"
       >
-        <p className="max-w-2xl text-sm text-slate-200/90">
+        <p className="max-w-2xl text-sm text-[#6b5d4f]">
           Carte des plats, des boissons et des chichas : découvrez l&apos;univers
           Just Relax. Les cartes PDF vous permettent de consulter le détail
           complet, tandis que la carte digitale ci-dessous offre une lecture
           confortable sur mobile.
         </p>
-        <p className="mt-3 max-w-2xl text-xs font-medium text-amber-200">
+        <p className="mt-3 max-w-2xl text-xs font-medium text-[#d946a6]">
           Tous nos plats sont préparés avec une cuisine 100 % halal.
         </p>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           {justRelaxData.menus.map((menu) => (
             <div
               key={menu.id}
-              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-md shadow-black/40"
+              className="flex flex-col justify-between rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-5 shadow-md shadow-black/10"
             >
               <div>
-                <h3 className="text-base font-semibold text-slate-50">
+                <h3 className="text-base font-semibold text-[#2d2416]">
                   {menu.name}
                 </h3>
                 {menu.description && (
-                  <p className="mt-2 text-xs text-slate-300">
+                  <p className="mt-2 text-xs text-[#6b5d4f]">
                     {menu.description}
                   </p>
                 )}
@@ -55,7 +55,7 @@ export default function MenuPage() {
                     href={menu.pdfUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center rounded-full bg-amber-400 px-4 py-2 font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
+                    className="inline-flex items-center rounded-full bg-[#d946a6] px-4 py-2 font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3]"
                   >
                     Consulter le PDF
                   </a>
@@ -80,12 +80,12 @@ export default function MenuPage() {
             : undefined
         }
       >
-        <div className="mb-5 flex snap-x gap-2 overflow-x-auto pb-1 text-xs text-slate-100/90">
+        <div className="mb-5 flex snap-x gap-2 overflow-x-auto pb-1 text-xs text-[#6b5d4f]">
           {categoryLinks.map((category) => (
             <a
               key={category.id}
               href={`#${category.id}`}
-              className="snap-start rounded-full border border-white/20 bg-black/40 px-3 py-1 font-medium transition hover:border-amber-300/80 hover:text-amber-200"
+              className="snap-start rounded-full border border-[#d4c5b0] bg-[#f5ede3] px-3 py-1 font-medium transition hover:border-[#d946a6] hover:text-[#d946a6]"
             >
               {category.name}
             </a>
@@ -100,7 +100,7 @@ export default function MenuPage() {
               aria-label={category.name}
             >
               <div>
-                <h3 className="text-sm font-semibold text-slate-50">
+                <h3 className="text-sm font-semibold text-[#2d2416]">
                   {category.name}
                 </h3>
               </div>
@@ -129,9 +129,9 @@ export default function MenuPage() {
         background="subtle"
       >
         <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-center">
-          <div className="space-y-3 text-sm text-slate-100/90">
+          <div className="space-y-3 text-sm text-[#6b5d4f]">
             <p>
-              Pour vos repas, anniversaires, afterworks ou événements privés,{" "}
+              Pour vos repas, anniversaires, afterworks ou événements privés,{` `}
               <span className="font-semibold">{justRelaxData.name}</span> vous
               accueille dans un cadre cosy avec terrasse et espace lounge.
             </p>

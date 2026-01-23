@@ -14,7 +14,7 @@ export default function GaleriePage() {
         title="Galerie photos"
         eyebrow="Ambiance &amp; atmosphère"
       >
-        <p className="max-w-2xl text-sm text-slate-200/90">
+        <p className="max-w-2xl text-sm text-[#6b5d4f]">
           Découvrez l&apos;ambiance de Just Relax : salle, terrasse, chicha,
           cocktails et détails de décoration. Toutes les photos sont issues du
           site actuel et peuvent être complétées ou remplacées facilement dans{" "}

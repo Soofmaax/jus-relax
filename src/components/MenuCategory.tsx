@@ -9,11 +9,11 @@ export default function MenuCategory({ category }: MenuCategoryProps) {
   return (
     <section className="space-y-4">
       <div>
-        <h3 className="text-sm font-semibold text-slate-50">
+        <h3 className="text-sm font-semibold text-[#2d2416]">
           {category.name}
         </h3>
         {category.description && (
-          <p className="mt-1 text-xs text-slate-300">
+          <p className="mt-1 text-xs text-[#6b5d4f]">
             {category.description}
           </p>
         )}
@@ -27,7 +27,7 @@ export default function MenuCategory({ category }: MenuCategoryProps) {
             />
           ))
         ) : (
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-[#6b5d4f]">
             Cette catégorie est prête à être remplie. Ajoutez vos plats dans{" "}
             <code>data/just-relax.json</code>, section{" "}
             <code>menus[].categories[].items</code>.
