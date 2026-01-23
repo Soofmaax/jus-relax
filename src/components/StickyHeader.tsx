@@ -69,31 +69,31 @@ export default function StickyHeader() {
           <nav className="flex items-center gap-3 text-[11px] font-medium text-[#2d2416] sm:gap-5 sm:text-xs">
             <Link
               href="/menu"
-              className="transition-colors hover:text-[#d946a6]"
+              className="transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6]"
             >
               Menu
             </Link>
             <Link
               href="/reservation"
-              className="hidden transition-colors hover:text-[#d946a6] sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Réserver
             </Link>
             <Link
               href="/galerie"
-              className="hidden transition-colors hover:text-[#d946a6] sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Galerie
             </Link>
             <Link
               href="/evenements"
-              className="hidden transition-colors hover:text-[#d946a6] sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Événements
             </Link>
             <Link
               href="/contact"
-              className="hidden transition-colors hover:text-[#d946a6] sm:inline"
+              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
             >
               Contact
             </Link>
@@ -102,13 +102,13 @@ export default function StickyHeader() {
                 href={reservation.href}
                 target={reservation.target}
                 rel={reservation.rel}
-                className="hidden rounded-full bg-[#d946a6] px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3] sm:inline-flex"
+                className="hidden rounded-full bg-[#d946a6] px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fce7f3] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3] sm:inline-flex"
               >
                 {reservation.label}
               </a>
               <a
                 href={phoneHref}
-                className="inline-flex rounded-full border border-[#d4c5b0] px-3 py-1.5 text-[11px] font-semibold text-[#2d2416] shadow-sm transition hover:border-[#d946a6] hover:text-[#d946a6]"
+                className="inline-flex rounded-full border border-[#d4c5b0] px-3 py-1.5 text-[11px] font-semibold text-[#2d2416] shadow-sm transition hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
               >
                 Appeler
               </a>

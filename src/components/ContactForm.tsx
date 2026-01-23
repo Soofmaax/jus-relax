@@ -156,7 +156,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-[#d946a6] px-4 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3] disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-[#d946a6] px-4 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-[#f472b6]/70 transition hover:bg-[#f472b6] hover:ring-[#fce7f3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fce7f3] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "submitting" ? "Envoi en cours..." : "Envoyer"}
       </button>

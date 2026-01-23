@@ -113,8 +113,10 @@ export default function PremiumMenuOverlay() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group fixed right-4 top-24 z-40 inline-flex items-center gap-3 rounded-full border border-[#faf8f3]/30 bg-[#faf8f3]/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#faf8f3] shadow-md shadow-black/40 backdrop-blur-xl transition hover:translate-y-[-2px] hover:bg-[#d946a6]/25 hover:text-white sm:right-6 sm:top-24"
+        className="group fixed right-4 top-24 z-40 inline-flex items-center gap-3 rounded-full border border-[#faf8f3]/30 bg-[#faf8f3]/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#faf8f3] shadow-md shadow-black/40 backdrop-blur-xl transition hover:translate-y-[-2px] hover:bg-[#d946a6]/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f472b6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0806] sm:right-6 sm:top-24"
         aria-label="Ouvrir le menu immersif"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
       >
         <span className="hidden text-[10px] sm:inline">
           Carte immersive
@@ -142,7 +144,7 @@ export default function PremiumMenuOverlay() {
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="absolute right-4 top-4 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#faf8f3]/20 bg-white/5 text-3xl font-light text-[#faf8f3] shadow-lg shadow-black/50 backdrop-blur-xl transition hover:rotate-90 hover:border-[#d946a6]/60 hover:bg-[#d946a6]/25 hover:text-white sm:right-8 sm:top-6"
+            className="absolute right-4 top-4 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#faf8f3]/20 bg-white/5 text-3xl font-light text-[#faf8f3] shadow-lg shadow-black/50 backdrop-blur-xl transition hover:rotate-90 hover:border-[#d946a6]/60 hover:bg-[#d946a6]/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f472b6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0806] sm:right-8 sm:top-6"
             aria-label="Fermer le menu"
           >
             ×
@@ -165,7 +167,7 @@ export default function PremiumMenuOverlay() {
                       type="button"
                       onClick={() => setActiveGroup(key)}
                       className={[
-                        "relative flex items-center text-left transition duration-500",
+                        "relative flex items-center text-left rounded-full transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0806]",
                         isActive
                           ? "text-[#faf8f3]"
                           : "text-[#a39689] hover:text-[#d4c5b0]",

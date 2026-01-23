@@ -49,7 +49,7 @@ export default function SocialLinks({ social, demo = false }: SocialLinksProps) 
             href={item.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center rounded-full border border-[#d4c5b0] px-3 py-1 text-[11px] font-medium text-[#2d2416] transition hover:border-[#d946a6] hover:text-[#d946a6]"
+            className="inline-flex items-center rounded-full border border-[#d4c5b0] px-3 py-1 text-[11px] font-medium text-[#2d2416] transition hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
           >
             {item.label}
           </a>

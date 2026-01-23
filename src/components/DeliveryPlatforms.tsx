@@ -38,7 +38,7 @@ export default function DeliveryPlatforms({ data }: DeliveryPlatformsProps) {
             href={delivery.deliveroo}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-[#d4c5b0] bg-gradient-to-r from-[#f5ede3] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[#d946a6] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
+            className="flex items-center justify-between rounded-2xl border border-[#d4c5b0] bg-gradient-to-r from-[#f5ede3] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[#d946a6] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7c9473]">
@@ -59,7 +59,7 @@ export default function DeliveryPlatforms({ data }: DeliveryPlatformsProps) {
             href={delivery.uberEats}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-[#d4c5b0] bg-gradient-to-r from-[#f5ede3] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[#d946a6] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
+            className="flex items-center justify-between rounded-2xl border border-[#d4c5b0] bg-gradient-to-r from-[#f5ede3] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[#d946a6] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7c9473]">
