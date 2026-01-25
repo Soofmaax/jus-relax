@@ -36,6 +36,18 @@ export default function GalleryLightbox({ gallery }: GalleryLightboxProps) {
   const open = (index: number) => setActiveIndex(index);
   const close = () => setActiveIndex(null);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      close();
+    }
+    if (event.key === "ArrowLeft") {
+      showPrev();
+    }
+    if (event.key === "ArrowRight") {
+      showNext();
+    }
+  };
+
   const showPrev = () => {
     if (activeIndex === null) return;
     setActiveIndex((prev) =>
@@ -82,6 +94,8 @@ export default function GalleryLightbox({ gallery }: GalleryLightboxProps) {
           className="fixed inset-0 z-40 flex items-center justify-center bg-[#2d2416]/80 px-4 py-6 backdrop-blur-xl"
           aria-modal="true"
           role="dialog"
+          onKeyDown={handleKeyDown}
+          tabIndex={-1}
         >
           <button
             type="button"
