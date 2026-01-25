@@ -26,13 +26,13 @@ export default function CTAButtons({
   const reservation = getReservationInfo(data.contact);
 
   const baseClass =
-    "inline-flex items-center justify-center rounded-full text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]";
+    "inline-flex items-center justify-center rounded-full text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface)]";
 
   const primaryClass =
-    "bg-[#d946a6] px-4 py-2 text-white shadow-sm ring-1 ring-[#f472b6]/70 hover:bg-[#f472b6] hover:ring-[#fce7f3]";
+    "bg-[var(--accent)] px-4 py-2 text-white shadow-sm ring-1 ring-[#f472b6]/70 hover:bg-[#f472b6] hover:ring-[#fce7f3]";
 
   const secondaryClass =
-    "border border-[#d4c5b0] px-4 py-2 text-[#2d2416] hover:border-[#d946a6] hover:text-[#d946a6]";
+    "border border-[var(--border-soft)] px-4 py-2 text-[#2d2416] hover:border-[var(--accent)] hover:text-[var(--accent)]";
 
   const layoutClass =
     layout === "stacked"

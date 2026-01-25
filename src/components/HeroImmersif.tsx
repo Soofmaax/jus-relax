@@ -54,7 +54,7 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-[2.6rem] border border-[#d4c5b0] bg-[#faf8f3] px-4 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.12)] sm:px-8 sm:py-10">
+    <section className="relative overflow-hidden rounded-[2.6rem] border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.12)] sm:px-8 sm:py-10">
       {/* Ambient background + pétales */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(244,114,182,0.16),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,148,115,0.18),_transparent_70%)]" />
@@ -77,11 +77,11 @@ export default function HeroImmersif({ data }: HeroImmersifProps) {
         transition={shouldReduceMotion ? undefined : { type: "spring", stiffness: 120, damping: 18 }}
       >
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#d4c5b0]/70 bg-[#f5ede3] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#2d2416]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)]/70 bg-[var(--surface-alt)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#2d2416]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#7c9473] shadow-[0_0_0_4px_rgba(124,148,115,0.45)]" />
             <span>Pantin · 7j/7 jusqu&apos;à 2h</span>
           </div>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#2d2416] sm:text-4xl md:text-5xl">
+          <h1 className="font-display text-balance text-3xl font-semibold tracking-tight text-[#2d2416] sm:text-4xl md:text-5xl">
             {data.name}
             <span className="block text-lg font-normal text-[#d946a6] sm:text-xl">
               Restaurant &amp; Lounge

@@ -10,19 +10,19 @@ export default function Hero({ data }: HeroProps) {
   const heroImage = data.heroImage || data.gallery[0]?.images[0]?.url;
 
   return (
-    <section className="relative overflow-hidden rounded-[2.5rem] border border-[#d4c5b0] bg-[#faf8f3] px-4 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.12)] sm:px-8 sm:py-10">
+    <section className="relative overflow-hidden rounded-[2.5rem] border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.12)] sm:px-8 sm:py-10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(244,114,182,0.16),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(124,148,115,0.18),_transparent_70%)]" />
       <div className="relative grid gap-10 md:grid-cols-[minmax(0,1.05fr),minmax(0,0.95fr)] md:items-center">
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#d4c5b0]/70 bg-[#f5ede3] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#2d2416]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)]/70 bg-[var(--surface-alt)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#2d2416]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#7c9473] shadow-[0_0_0_4px_rgba(124,148,115,0.35)]" />
             <span>Pantin · 7j/7 jusqu&apos;à 2h</span>
           </div>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#2d2416] sm:text-4xl md:text-5xl">
+          <h1 className="font-display text-balance text-3xl font-semibold tracking-tight text-[#2d2416] sm:text-4xl md:text-5xl">
             {data.name} –{" "}
-            <span className="text-[#d946a6]">{data.tagline}</span>
+            <span className="text-[var(--accent)]">{data.tagline}</span>
           </h1>
-          <p className="max-w-xl text-pretty text-sm text-[#6b5d4f] sm:text-base">
+          <p className="max-w-xl text-pretty text-sm text-[var(--text-muted)] sm:text-base">
             Atmosphère lounge, cocktails signatures, terrasse privée et chicha
             premium au cœur de Pantin (93500). Un lieu pensé pour prolonger vos
             soirées dans l&apos;Est parisien.
@@ -30,7 +30,7 @@ export default function Hero({ data }: HeroProps) {
           <div className="flex flex-wrap gap-3">
             <CTAButtons data={data} context="hero" />
           </div>
-          <div className="mt-3 grid gap-3 text-xs text-[#6b5d4f] sm:grid-cols-3">
+          <div className="mt-3 grid gap-3 text-xs text-[var(--text-muted)] sm:grid-cols-3">
             <div className="space-y-1">
               <p className="font-semibold text-[#2d2416]">Adresse</p>
               <p>
@@ -43,7 +43,7 @@ export default function Hero({ data }: HeroProps) {
               <p className="font-semibold text-[#2d2416]">Horaires</p>
               {data.openingHours.slice(0, 2).map((range) => (
                 <p key={range.days}>
-                  <span className="block font-medium text-[#6b5d4f]">
+                  <span className="block font-medium text-[var(--text-muted)]">
                     {range.days}
                   </span>
                   {range.slots.map((slot) => (
@@ -57,13 +57,13 @@ export default function Hero({ data }: HeroProps) {
             <div className="space-y-1">
               <p className="font-semibold text-[#2d2416]">Points forts</p>
               <div className="mt-1 flex flex-wrap gap-1.5">
-                <span className="inline-flex items-center rounded-full bg-[#fce7f3] px-2.5 py-1 text-[11px] text-[#d946a6] ring-1 ring-[#d4c5b0]">
+                <span className="inline-flex items-center rounded-full bg-[#fce7f3] px-2.5 py-1 text-[11px] text-[var(--accent)] ring-1 ring-[var(--border-soft)]">
                   Terrasse privée
                 </span>
                 <span className="inline-flex items-center rounded-full bg-[#e8f0e6] px-2.5 py-1 text-[11px] text-[#5a7a52] ring-1 ring-[#7c9473]/60">
                   Cocktails signatures
                 </span>
-                <span className="inline-flex items-center rounded-full bg-[#fce7f3] px-2.5 py-1 text-[11px] text-[#d946a6] ring-1 ring-[#d4c5b0]">
+                <span className="inline-flex items-center rounded-full bg-[#fce7f3] px-2.5 py-1 text-[11px] text-[var(--accent)] ring-1 ring-[var(--border-soft)]">
                   Chicha premium
                 </span>
               </div>

@@ -92,6 +92,11 @@ export default function ReservationPage() {
             </div>
           </div>
           <div className="space-y-4">
+            {/* NOTE développeur :
+               Lorsque vous intégrerez un widget tiers (TheFork, module interne, etc.),
+               privilégiez un script asynchrone et/ou une iframe chargée en lazy
+               pour ne pas bloquer le rendu de la page. Évitez `document.write` et
+               les scripts qui supposent la présence d'éléments en dehors de ce bloc. */}
             <div className="rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-5 text-sm text-[#6b5d4f] shadow-md shadow-black/10 sm:p-6">
               <h2 className="text-sm font-semibold text-[#2d2416]">
                 Widget de réservation en ligne

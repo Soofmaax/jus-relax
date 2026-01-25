@@ -49,13 +49,6 @@ export const metadata: Metadata = {
         ]
       : [],
   },
-  alternates: {
-    canonical: "/",
-    languages: {
-      "fr-FR": "/",
-      fr: "/",
-    },
-  },
 };
 
 export default function RootLayout({
@@ -207,6 +200,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#faf8f3] text-[#2d2416]`}
       >
+        <a href="#main-content" className="skip-link">
+          Passer au contenu principal
+        </a>
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -219,7 +215,10 @@ export default function RootLayout({
         />
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#faf8f3] via-[#f5ede3] to-[#eae1d5]">
           <StickyHeader />
-          <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
+          <main
+            id="main-content"
+            className="flex-1 px-2 py-4 sm:px-4 sm:py-6"
+          >
             {children}
           </main>
           <footer className="border-t border-[#d4c5b0] bg-[#2d2416]">

@@ -16,16 +16,16 @@ export default function DeliveryPlatforms({ data }: DeliveryPlatformsProps) {
   }
 
   return (
-    <section className="rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-6 shadow-md shadow-black/10 sm:p-8">
+    <section className="rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-md shadow-black/10 sm:p-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
             Commander à domicile
           </p>
           <h2 className="mt-1 text-xl font-semibold tracking-tight text-[#2d2416] sm:text-2xl">
             Just Relax chez vous
           </h2>
-          <p className="mt-2 max-w-xl text-sm text-[#6b5d4f]">
+          <p className="mt-2 max-w-xl text-sm text-[var(--text-muted)]">
             Retrouvez la cuisine du restaurant en livraison. Idéal pour un dîner
             à la maison, un match entre amis ou une soirée chill sur la terrasse.
           </p>
@@ -38,14 +38,14 @@ export default function DeliveryPlatforms({ data }: DeliveryPlatformsProps) {
             href={delivery.deliveroo}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-[#d4c5b0] bg-gradient-to-r from-[#f5ede3] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[#d946a6] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
+            className="flex items-center justify-between rounded-2xl border border-[var(--border-soft)] bg-gradient-to-r from-[var(--surface-alt)] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[var(--accent)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface)]"
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7c9473]">
                 Livraison
               </p>
               <p className="mt-1 font-semibold">Commander sur Deliveroo</p>
-              <p className="text-[11px] text-[#6b5d4f]">
+              <p className="text-[11px] text-[var(--text-muted)]">
                 Ouvert selon les horaires du restaurant.
               </p>
             </div>
@@ -59,14 +59,14 @@ export default function DeliveryPlatforms({ data }: DeliveryPlatformsProps) {
             href={delivery.uberEats}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-[#d4c5b0] bg-gradient-to-r from-[#f5ede3] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[#d946a6] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3]"
+            className="flex items-center justify-between rounded-2xl border border-[var(--border-soft)] bg-gradient-to-r from-[var(--surface-alt)] to-[#eae1d5] px-4 py-4 text-sm text-[#2d2416] shadow-sm shadow-black/10 transition hover:border-[var(--accent)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface)]"
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7c9473]">
                 Livraison
               </p>
               <p className="mt-1 font-semibold">Commander sur Uber Eats</p>
-              <p className="text-[11px] text-[#6b5d4f]">
+              <p className="text-[11px] text-[var(--text-muted)]">
                 Retrouvez Just Relax en quelques clics.
               </p>
             </div>

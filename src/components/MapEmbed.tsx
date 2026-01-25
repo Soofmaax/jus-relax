@@ -11,7 +11,7 @@ export default function MapEmbed({ mapUrl, title }: MapEmbedProps) {
     : mapUrl;
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#d4c5b0] bg-[#f5ede3] shadow-md shadow-black/10">
+    <div className="overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-alt)] shadow-md shadow-black/10">
       <iframe
         title={title || "Plan d'accès"}
         src={embedUrl}

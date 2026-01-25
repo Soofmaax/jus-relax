@@ -3,6 +3,11 @@
 :root {
   --background: #faf8f3;
   --foreground: #2d2416;
+  --surface: #faf8f3;
+  --surface-alt: #f5ede3;
+  --text-muted: #6b5d4f;
+  --border-soft: #d4c5b0;
+  --accent: #d946a6;
 }
 
 @theme inline {
@@ -20,8 +25,33 @@ body {
 }
 
 h1,
-h2,
-.font-display {
+h2 {
   font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
   letter-spacing: 0.04em;
+}
+
+.font-display {
+  font-family: var(
+    --font-display,
+    var(--font-geist-sans, system-ui, -apple-system, sans-serif)
+  );
+  letter-spacing: 0.04em;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: #2d2416;
+  color: #faf8f3;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.skip-link:focus-visible {
+  left: 1rem;
+  top: 1rem;
 }

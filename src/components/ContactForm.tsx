@@ -91,10 +91,14 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-[#6b5d4f]">
+        <label
+          htmlFor="contact-name"
+          className="block text-xs font-medium text-[#6b5d4f]"
+        >
           Nom
         </label>
         <input
+          id="contact-name"
           type="text"
           required
           value={form.name}
@@ -104,10 +108,14 @@ export default function ContactForm() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium text-[#6b5d4f]">
+        <label
+          htmlFor="contact-email"
+          className="block text-xs font-medium text-[#6b5d4f]"
+        >
           E-mail
         </label>
         <input
+          id="contact-email"
           type="email"
           required
           value={form.email}
@@ -117,10 +125,14 @@ export default function ContactForm() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium text-[#6b5d4f]">
+        <label
+          htmlFor="contact-phone"
+          className="block text-xs font-medium text-[#6b5d4f]"
+        >
           Téléphone
         </label>
         <input
+          id="contact-phone"
           type="tel"
           value={form.phone}
           onChange={updateField("phone")}
@@ -129,10 +141,14 @@ export default function ContactForm() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium text-[#6b5d4f]">
+        <label
+          htmlFor="contact-subject"
+          className="block text-xs font-medium text-[#6b5d4f]"
+        >
           Objet
         </label>
         <input
+          id="contact-subject"
           type="text"
           value={form.subject}
           onChange={updateField("subject")}
@@ -141,10 +157,14 @@ export default function ContactForm() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium text-[#6b5d4f]">
+        <label
+          htmlFor="contact-message"
+          className="block text-xs font-medium text-[#6b5d4f]"
+        >
           Message
         </label>
         <textarea
+          id="contact-message"
           rows={4}
           required
           value={form.message}
@@ -160,16 +180,22 @@ export default function ContactForm() {
       >
         {status === "submitting" ? "Envoi en cours..." : "Envoyer"}
       </button>
-      {status === "success" && (
-        <p className="text-[11px] text-[#5a7a52]">
-          Merci, votre message a bien été envoyé. Nous vous répondrons au plus vite.
-        </p>
-      )}
-      {status === "error" && error && (
-        <p className="text-[11px] text-[#d946a6]">
-          {error}
-        </p>
-      )}
+      <div
+        aria-live="polite"
+        role="status"
+        className="mt-1 min-h-[1rem] text-[11px]"
+      >
+        {status === "success" && (
+          <p className="text-[11px] text-[#5a7a52]">
+            Merci, votre message a bien été envoyé. Nous vous répondrons au plus vite.
+          </p>
+        )}
+        {status === "error" && error && (
+          <p className="text-[11px] text-[#d946a6]">
+            {error}
+          </p>
+        )}
+      </div>
     </form>
   );
 }
