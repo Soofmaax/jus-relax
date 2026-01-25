@@ -34,11 +34,27 @@ export default function ImmersiveIntro({ open, onEnter }: ImmersiveIntroProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [open, onEnter]);
 
+  // Permet de fermer l'intro avec la touche Échap.
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onEnter();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, onEnter]);
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
           className="fixed inset-0 z-40 flex items-center justify-center bg-gradient-to-b from-[#2d2416] via-[#6b5d4f] to-[#faf8f3]"
+          role="dialog"
+          aria-modal="true"
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
@@ -124,6 +140,13 @@ export default function ImmersiveIntro({ open, onEnter }: ImmersiveIntroProps) {
                 Réserver
               </Link>
             </div>
+            <button
+              type="button"
+              onClick={onEnter}
+              className="mt-3 text-[11px] text-[#f5ede3] underline-offset-2 hover:underline"
+            >
+              Passer l&apos;intro
+            </button>
 
             <p className="mt-3 text-[11px] text-[#6b5d4f]">
               Adresse&nbsp;: {justRelaxData.contact.address.line1},{" "}

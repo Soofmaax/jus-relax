@@ -107,6 +107,21 @@ export default function PremiumMenuOverlay() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   return (
     <>
       {/* Trigger button fixed dans le coin haut droit de la page menu */}
@@ -130,7 +145,11 @@ export default function PremiumMenuOverlay() {
 
       {/* Overlay plein écran */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0806]/[0.96] bg-[radial-gradient(circle_at_20%_40%,rgba(124,148,115,0.18),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(217,70,166,0.18),transparent_60%)] px-4 py-8 backdrop-blur-3xl sm:px-6 md:px-10">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0806]/[0.96] bg-[radial-gradient(circle_at_20%_40%,rgba(124,148,115,0.18),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(217,70,166,0.18),transparent_60%)] px-4 py-8 backdrop-blur-3xl sm:px-6 md:px-10"
+          role="dialog"
+          aria-modal="true"
+        >
           {/* Halo qui suit le curseur */}
           <div
             className="pointer-events-none fixed h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(217,70,166,0.12)_0%,_transparent_70%)] blur-[90px] transition-transform duration-200 ease-out"

@@ -75,25 +75,25 @@ export default function StickyHeader() {
             </Link>
             <Link
               href="/reservation"
-              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
+              className="transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6]"
             >
               Réserver
             </Link>
             <Link
               href="/galerie"
-              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
+              className="transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6]"
             >
               Galerie
             </Link>
             <Link
               href="/evenements"
-              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
+              className="transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6]"
             >
               Événements
             </Link>
             <Link
               href="/contact"
-              className="hidden transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6] sm:inline"
+              className="transition-colors hover:text-[#d946a6] focus-visible:outline-none focus-visible:underline focus-visible:decoration-[#d946a6]"
             >
               Contact
             </Link>
