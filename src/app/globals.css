@@ -25,9 +25,16 @@ body {
 }
 
 h1,
-h2,
-.font-display {
+h2 {
   font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+  letter-spacing: 0.04em;
+}
+
+.font-display {
+  font-family: var(
+    --font-display,
+    var(--font-geist-sans, system-ui, -apple-system, sans-serif)
+  );
   letter-spacing: 0.04em;
 }
 
