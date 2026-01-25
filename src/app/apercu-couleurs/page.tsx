@@ -4,6 +4,10 @@ export const metadata: Metadata = {
   title: "Aperçu des couleurs",
   description:
     "Palette de couleurs proposée pour Just Relax – Option 1 : Terrasse Méditerranéenne.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const PALETTE = [

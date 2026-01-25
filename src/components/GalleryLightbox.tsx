@@ -130,21 +130,21 @@ export default function GalleryLightbox({ gallery }: GalleryLightboxProps) {
               <button
                 type="button"
                 onClick={showPrev}
-                className="rounded-full border border-[#d4c5b0] px-3 py-1 font-medium hover:border-[#d946a6] hover:text-[#d946a6]"
+                className="rounded-full border border-[#d4c5b0] px-3 py-1 font-medium hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2416]"
               >
                 Précédente
               </button>
               <button
                 type="button"
                 onClick={close}
-                className="rounded-full border border-[#d4c5b0] px-3 py-1 font-medium hover:border-[#d946a6] hover:text-[#d946a6]"
+                className="rounded-full border border-[#d4c5b0] px-3 py-1 font-medium hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2416]"
               >
                 Fermer
               </button>
               <button
                 type="button"
                 onClick={showNext}
-                className="rounded-full border border-[#d4c5b0] px-3 py-1 font-medium hover:border-[#d946a6] hover:text-[#d946a6]"
+                className="rounded-full border border-[#d4c5b0] px-3 py-1 font-medium hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2416]"
               >
                 Suivante
               </button>
