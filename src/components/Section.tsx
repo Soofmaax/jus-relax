@@ -25,14 +25,14 @@ export default function Section({
       id={id}
       className={
         background === "subtle"
-          ? "rounded-3xl border border-[#d4c5b0] bg-[#faf8f3] p-6 shadow-md shadow-black/10 sm:p-8"
+          ? "rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-md shadow-black/10 sm:p-8"
           : "space-y-6"
       }
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
         <div>
           {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d946a6]">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
               {eyebrow}
             </p>
           )}
@@ -43,7 +43,7 @@ export default function Section({
         {cta && (
           <a
             href={cta.href}
-            className="mt-2 inline-flex items-center justify-center rounded-full border border-[#d4c5b0] px-4 py-1.5 text-xs font-medium text-[#2d2416] transition hover:border-[#d946a6] hover:text-[#d946a6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946a6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f3] sm:mt-0"
+            className="mt-2 inline-flex items-center justify-center rounded-full border border-[var(--border-soft)] px-4 py-1.5 text-xs font-medium text-[#2d2416] transition hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface)] sm:mt-0"
           >
             {cta.label}
           </a>
